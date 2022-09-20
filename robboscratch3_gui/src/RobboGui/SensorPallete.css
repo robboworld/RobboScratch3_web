@@ -1,0 +1,215 @@
+
+@media (max-height:900px) {
+
+  #sensor_pallete{
+
+      /*margin-left: 6%;
+      margin-top: 2%;*/
+
+    position: fixed;
+    top: 5px;
+    z-index: 500;
+    left: 640px;
+
+      height:50px;
+
+      font-size: 11pt;
+
+
+
+
+  }
+
+}
+
+@media (min-height:901px) {
+
+  #sensor_pallete{
+
+     /* margin-left: 4%;*/
+     /* margin-top: 2%;*/
+
+    position: fixed;
+    top: 5px;
+    z-index: 500;
+    left: 640px;
+
+      height:50px;
+
+      font-size: 11pt;
+
+
+  }
+
+}
+
+
+/*#sensor_pallete{
+
+    margin-left: 6%;
+    margin-top: 2%;
+
+    height:90%;
+
+
+
+
+} */
+
+.btn_trigger_extension_pack{
+
+    margin-top: 20%;
+    display: block;
+
+
+}
+
+.btn_trigger_sensor_choose_window{
+
+
+  margin-top: 21%;
+  display: block;
+
+}
+
+#robot_sensors{
+
+    display: inline-block;
+
+    border: 2px outset rgba(0,0,0,0.5);
+
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+
+    height:100%;
+
+    vertical-align: top;
+
+    margin-top: 5px;
+
+}
+
+
+#laboratory_sensors{
+
+    display: inline-block;
+    margin-left: 5%;
+
+    border: 2px outset rgba(0,0,0,0.5);
+
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+
+   height:100%;
+
+   vertical-align: top;
+
+}
+
+.sensor_panel_tittle{
+
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b4ddb4+0,83c783+17,52b152+33,008a00+67,005700+83,002400+100;Green+3D+%231 */
+  background: #b4ddb4; /* Old browsers */
+  background: -moz-linear-gradient(top, #b4ddb4 0%, #83c783 17%, #52b152 33%, #008a00 67%, #005700 83%, #002400 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #b4ddb4 0%,#83c783 17%,#52b152 33%,#008a00 67%,#005700 83%,#002400 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #b4ddb4 0%,#83c783 17%,#52b152 33%,#008a00 67%,#005700 83%,#002400 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4ddb4', endColorstr='#002400',GradientType=0 ); /* IE6-9 */
+
+
+height: 30px;
+
+text-align: center;
+
+}
+
+.robot_connection_status{
+
+    border-width: 2px;
+    border-radius: 5px;
+    border-style: solid;
+    display: inline-block;
+    margin: 5px 5px;
+}
+
+.robot_status_connected{
+
+    background-color: green;
+
+}
+
+.robot_status_disconnected{
+
+    background-color: red;
+
+}
+
+.laboratory_connection_status{
+
+    border-width: 2px;
+    border-radius: 5px;
+    border-style: solid;
+    display: inline-block;
+    margin: 5px 5px;
+}
+
+.laboratory_status_connected{
+
+    background-color: green;
+
+}
+
+.laboratory_status_disconnected{
+
+    background-color: red;
+
+}
+
+.robot_loading_icon{
+
+     background-image: url(/build/static/robbo_assets/searching.gif);
+    /* background-size: 30px; */
+    min-width: 20px;
+    min-height: 20px;
+    /* max-width: 30px; */
+  /*  display: inline-block; */
+    margin-left: 5px;
+    margin-right: 5px;
+
+
+
+}
+
+.robot_loading_icon_hidden{
+
+      display:none;
+
+}
+
+.robot_loading_icon_showing{
+
+     display: inline-block;
+}
+
+.laboratory_loading_icon{
+
+     background-image: url(/build/static/robbo_assets/searching.gif);
+    /* background-size: 30px; */
+    min-width: 20px;
+    min-height: 20px;
+    /* max-width: 30px; */
+  /*  display: inline-block; */
+    margin-left: 5px;
+    margin-right: 5px;
+
+
+
+}
+
+.laboratory_loading_icon_hidden{
+
+      display:none;
+
+}
+
+.laboratory_loading_icon_showing{
+
+     display: inline-block;
+}

@@ -1,0 +1,51 @@
+.arduino_palette{
+
+    display: inline-block;
+    /*display:none;*/
+    margin-left: 5%;
+
+   border: 1px solid #00af41;
+
+   height:100%;
+
+   min-width: 400px;
+
+   vertical-align: top;
+
+   background-color: white;
+
+}
+
+.arduino_panel_tittle{
+
+  background-color: #00af41;
+  color: white;
+  font-family: "Proxima Nova Regular",Helvetica,Arial, sans-serif;  
+
+height: 30px;
+
+text-align: center;
+
+padding-top: 3px;
+
+}
+
+.close_icon{
+
+    float:right;
+    background-image: url('/static/robbo_assets/icon_close_window.png');
+    width: 27px;
+    height: 27px;
+
+   
+
+    cursor: pointer;
+
+}
+
+.column{
+
+    display: inline-block;
+    margin-left:10px;
+    margin-right:10px;
+}

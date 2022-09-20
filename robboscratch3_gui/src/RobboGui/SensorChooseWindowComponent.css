@@ -1,0 +1,76 @@
+.sensor_choose_window{
+
+  z-index: 1000000 !important;
+/*background-color: #AAAAAA;*/
+/*position: absolute;
+top:40%;
+left:20%;*/
+
+border: 1px solid #00af41;
+
+
+
+
+}
+
+.sensor_choose_window_components_block{
+
+
+    width:100%;
+    background-color: white;
+
+
+}
+
+.window_show{
+
+
+    display: block;
+
+}
+
+.window_drag{
+
+
+        opacity:  0.5;
+        cursor: move;
+        background-color: yellow;
+
+}
+
+.window_hide{
+
+
+    display: none;
+
+}
+
+.sensor_choose_window_tittle{
+
+    background-color: #00af41;
+    color: white;
+    font-family: "Proxima Nova Regular",Helvetica,Arial, sans-serif;
+   
+    padding-top: 3px;
+
+
+
+    height: 30px;
+
+    text-align: center;
+
+}
+
+.sensor-choose-window-tittle-old{
+
+
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a7c7dc+0,86b0ce+55,77abd1+100 */
+  background: #a7c7dc; /* Old browsers */
+  background: -moz-linear-gradient(top, #a7c7dc 0%, #86b0ce 55%, #77abd1 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #a7c7dc 0%,#86b0ce 55%,#77abd1 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #a7c7dc 0%,#86b0ce 55%,#77abd1 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7c7dc', endColorstr='#77abd1',GradientType=0 ); /* IE6-9 */
+
+
+
+}

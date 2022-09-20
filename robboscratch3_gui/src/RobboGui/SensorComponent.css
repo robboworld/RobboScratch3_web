@@ -1,0 +1,24 @@
+.sensor_block_field{
+
+     display: inline-block;
+     margin: 2px 1px;
+
+
+
+
+}
+
+.sensor_choose_icon:hover{
+
+
+      cursor: pointer;
+
+}
+
+.sensor{
+
+  /*  display: inline-block; */
+
+    padding-left: 40px;
+
+}

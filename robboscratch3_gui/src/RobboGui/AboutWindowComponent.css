@@ -1,0 +1,75 @@
+.about_window_tittle{
+
+
+
+    height: 30px;
+
+    text-align: center;
+
+    background-color: #00af41;
+    color: white;
+    font-family: "Proxima Nova Regular",Helvetica,Arial, sans-serif;
+    /* vertical-align: middle; */
+    padding-top: 3px;
+
+}
+
+.close_icon{
+
+    float:right;
+    background-image: url('/static/robbo_assets/icon_close_window.png');
+    width: 27px;
+    height: 27px;
+
+    cursor: pointer;
+
+}
+
+.about_window{
+
+    display: inline-block;
+    margin-left: 5%;
+
+    border: 1px solid #00af41;
+
+    
+
+   height:100%;
+
+   min-width: 800px; /*650*/
+
+   vertical-align: top;
+
+   background-color: white;
+
+}
+
+.about_window_content{
+
+
+
+}
+
+.about_window_content_raw{
+
+    margin: 15px 10px;
+
+}
+
+.about_window_content_column{
+
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+    min-width: 200px;
+
+}
+
+.about_window_value_column{
+
+    display: inline-block;
+    margin-left:10px;
+    margin-right: 10px;
+    min-width: 310px;
+
+}

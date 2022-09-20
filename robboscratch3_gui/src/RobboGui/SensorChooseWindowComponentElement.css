@@ -1,0 +1,11 @@
+.sensor_choose_window_component_element{
+
+      display: inline-block;
+
+}
+
+.sensor_choose_window_component_element:hover{
+
+    border:1px outset #CCCCCC;
+    /*background-color: #CCCCCC;*/
+}

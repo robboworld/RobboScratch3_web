@@ -1,0 +1,121 @@
+@import "../css/colors.css";
+
+.robbo_gui{
+
+    width:100%;
+
+
+}
+
+.alert{
+
+  overflow:scroll;
+  width: 183px;
+
+}
+
+.alert::-webkit-scrollbar {
+    width: 12px;
+    height: 10px;
+    background-color: rgb(21, 21, 21);
+}
+
+.alert::-webkit-scrollbar-corner {
+    background-color: rgb(21, 21, 21);
+}
+
+.alert::-webkit-scrollbar-thumb {
+    border-width: 1px 1px 1px 2px;
+    border-color: #777;
+    background-color: #aaa;
+}
+
+.content_collapsed{
+
+    height:auto;
+
+
+}
+
+@media (max-height:900px) {
+
+  .content_expand{
+
+
+    /*  height:7%;*/
+
+
+  }
+
+}
+
+@media (min-height:901px) {
+
+  .content_expand{
+
+
+     /* height:10%;*/
+
+
+  }
+
+}
+
+
+
+.robbo_search_devices{
+
+  position: absolute;
+  top:1%;
+  left: 460px;
+
+  width:180px;
+  /*height: 30px;*/
+
+    color: white;
+   /* background-color: #383838;*/
+    border-radius: 10px;
+
+    z-index: 500;
+
+    cursor: pointer;
+
+    min-height: 30px;
+
+    align-items: center;
+    min-width: 100px;
+    padding-left: 32px;
+    display: flex;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight:bold;
+
+    /*background-image: url('/build/static/robbo_assets/plug_devices.svg');
+    background-position: left;
+    background-repeat: no-repeat;*/
+
+    
+
+}
+
+.robbo_search_devices:hover{
+
+    background-color: $ui-black-transparent;
+
+}
+
+.version{
+
+
+      font-size: 10pt;
+      font-weight: bold;
+      margin-left: 20px;
+      margin-top: 20px;
+      position:absolute;
+      top:1px;
+      right:10px;
+
+      z-index: 500;
+
+      color:white;
+}

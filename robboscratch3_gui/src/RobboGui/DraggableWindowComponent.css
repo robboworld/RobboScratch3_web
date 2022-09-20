@@ -1,0 +1,24 @@
+
+.draggable_window{
+
+    z-index: 100000 !important;
+
+
+}
+
+.window_show{
+
+
+    display: block;
+
+
+}
+
+
+
+.window_hide{
+
+
+    display: none;
+
+}

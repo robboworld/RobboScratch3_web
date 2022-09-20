@@ -1,0 +1,91 @@
+.iot_connection_tittle{
+
+
+
+    height: 30px;
+
+    text-align: center;
+
+    background-color:  #00af41;
+    color: white;
+    font-family: "Proxima Nova Regular",Helvetica,Arial, sans-serif;
+    /* vertical-align: middle; */
+    padding-top: 3px;
+
+}
+
+.close_icon{
+
+    float:right;
+    background-image: url('/static/robbo_assets/icon_close_window.png');
+    width: 27px;
+    height: 27px;
+
+    cursor: pointer;
+
+}
+
+.connection_true_icon{
+    float:right;
+    background-color: #00af41 ;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+}
+
+.connection_false_icon{
+    float:right;
+    background-color: rgb(255, 0, 0) ;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+}
+
+.iot_connection{
+
+    display: inline-block;
+    margin-left: 5%;
+
+    border: 1px solid  #00af41;
+
+    
+
+   height:100%;
+
+   min-width: 800px; /*650*/
+
+   vertical-align: top;
+
+   background-color: white;
+
+}
+
+.iot_connection_content{
+
+
+
+}
+
+.iot_connection_content_raw{
+
+    margin: 15px 10px;
+
+}
+
+.iot_connection_content_column{
+
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+    min-width: 200px;
+
+}
+
+.iot_connection_value_column{
+
+    display: inline-block;
+    margin-left:10px;
+    margin-right: 10px;
+    min-width: 310px;
+
+}

@@ -1,0 +1,112 @@
+
+@media (max-height:900px) {
+
+  .firmware_flasher_component{
+
+      display: inline-block;
+      margin-left: 5%;
+
+      border: 2px outset rgba(0,0,0,0.5);
+
+      box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+
+     height:100%;
+
+     min-width: 815px;
+
+     vertical-align: top;
+
+     background-color: white;
+
+     font-size: 12px;
+
+  }
+
+  .devices_header_element{
+
+      display: inline-block;
+      padding-left: 3px;
+      padding-right: 3px;
+      width: 160px;
+
+  }
+
+}
+
+@media (min-height:901px) {
+
+  .firmware_flasher_component{
+
+      display: inline-block;
+      margin-left: 5%;
+
+      border: 2px outset rgba(0,0,0,0.5);
+
+      box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+
+     height:100%;
+
+     min-width: 815px;
+
+     vertical-align: top;
+
+     background-color: white;
+
+  }
+
+  .devices_header_element{
+
+      display: inline-block;
+      padding-left: 5px;
+      padding-right: 5px;
+      width: 160px;
+
+  }
+}
+
+
+
+
+
+
+.firmware_flasher_component_tittle{
+
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b4ddb4+0,83c783+17,52b152+33,008a00+67,005700+83,002400+100;Green+3D+%231 */
+  background: #b4ddb4; /* Old browsers */
+  background: -moz-linear-gradient(top, #b4ddb4 0%, #83c783 17%, #52b152 33%, #008a00 67%, #005700 83%, #002400 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #b4ddb4 0%,#83c783 17%,#52b152 33%,#008a00 67%,#005700 83%,#002400 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #b4ddb4 0%,#83c783 17%,#52b152 33%,#008a00 67%,#005700 83%,#002400 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4ddb4', endColorstr='#002400',GradientType=0 ); /* IE6-9 */
+
+
+height: 30px;
+
+text-align: center;
+
+}
+
+.get_devices_info{
+
+      margin: 10px;
+
+}
+
+.devices_header{
+
+
+
+}
+
+.close_icon{
+
+    float:right;
+    background-image: url('/build/static/robbo_assets/icon_close_window.png');
+    width: 16px;
+    height: 16px;
+
+    margin-right: 4px;
+    margin-top: 4px;
+
+    cursor: pointer;
+
+}

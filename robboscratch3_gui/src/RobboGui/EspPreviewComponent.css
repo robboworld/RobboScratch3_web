@@ -1,0 +1,77 @@
+.espPreview{
+    display: inline-block;
+    /* display:none;*/
+    /*border: 1px solid rgba(0,0,0,0.5);*/
+    /*box-shadow: 4px 4px 10px rgba(0,0,0,0.5);*/
+
+    height:30px;
+    width:50px;
+
+    vertical-align: top;
+
+    margin-top: 8px;
+    /*margin-left: 18px;*/
+    /*border-radius: 18px;*/
+    color:white;
+
+    font-family: "Proxima Nova Extrabold",Helvetica,Arial, sans-serif;
+}
+
+
+.esp_connection_status{
+    border-width: 2px;
+    border-radius: 5px;
+    border-style: solid;
+    display: inline-block;
+    margin: 5px 5px;
+    min-height: 15px;
+    min-width: 15px;
+    display:none;
+}
+
+.esp_status_connected{
+   /* background-color: green;*/
+   background-image: url('/static/robbo_assets/esp_status_connected.png');
+   background-repeat: no-repeat;
+}
+
+.esp_status_disconnected{
+
+   /* background-color: red;*/
+
+    background-image: url('/static/robbo_assets/esp_status_disconnected.png');
+    background-repeat: no-repeat;
+
+}
+
+
+.esp_loading_icon{
+    background-image: url(/build/static/robbo_assets/searching.gif);
+    /* background-size: 30px; */
+    min-width: 20px;
+    min-height: 20px;
+    /* max-width: 30px; */
+    /*  display: inline-block; */
+    margin-left: 5px;
+    margin-right: 5px;
+    display:none;
+}
+
+.espPreviewPic{
+    display: inline-block;
+    margin-left: 19px;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    vertical-align: middle;
+    margin-top: 4px;
+    font-weight: bold;
+    font-size: medium;
+}
+
+.esp_loading_icon_hidden{
+    display:none;
+}
+
+.esp_loading_icon_showing{
+    display: inline-block;
+}

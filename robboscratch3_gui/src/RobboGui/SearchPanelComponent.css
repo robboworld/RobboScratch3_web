@@ -1,0 +1,103 @@
+@import "../css/colors.css";
+
+
+.search_panel{
+
+  display: none;
+
+  position: absolute;
+  /*top:4.8%;*/
+  top:48px;
+  left:455px;
+/*  background-color: rgb(90,90,90);*/
+ 
+/*background-color: #00af41;*/
+
+  border: 1px solid #00af41;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+
+
+
+  /*box-shadow: 0px 6px 10px rgba(0,0,0,0.5);*/
+
+  color:#383838;
+
+  font-weight:bold;
+
+  font-size: 10px;
+
+  min-width: 200px;
+
+  min-height: 70px;
+
+  max-height: 300px;
+
+  overflow-y: scroll;
+
+  /*z-index: 1000 !important;*/
+}
+
+.search_panel_tittle_old{
+
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b4ddb4+0,83c783+17,52b152+33,008a00+67,005700+83,002400+100;Green+3D+%231 */
+  background: #b4ddb4; /* Old browsers */
+  background: -moz-linear-gradient(top, #b4ddb4 0%, #83c783 17%, #52b152 33%, #008a00 67%, #005700 83%, #002400 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #b4ddb4 0%,#83c783 17%,#52b152 33%,#008a00 67%,#005700 83%,#002400 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #b4ddb4 0%,#83c783 17%,#52b152 33%,#008a00 67%,#005700 83%,#002400 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4ddb4', endColorstr='#002400',GradientType=0 ); /* IE6-9 */
+
+
+height: 30px;
+
+text-align: center;
+
+}
+
+.search_panel_tittle{
+
+  height: 30px;
+
+  text-align: center;
+
+  /*background-image: url('/build/static/robbo_assets/bubblesvg.svg');*/
+  background-color: white;
+
+}
+
+.close_icon{
+
+    float:right;
+    background-image: url('/static/robbo_assets/icon_close_window_old.svg');
+    width: 16px;
+    height: 16px;
+    margin-top: 7px;
+    margin-right: 9px;
+
+    cursor: pointer;
+
+}
+
+.search_panel_body{
+
+ /* background-color: #00af41;*/
+
+  background-color: white;
+
+
+
+}
+
+.devices_not_found{
+
+  font-size: 14px;
+  padding:7px;
+
+}
+
+.bluetooth_devices_not_found{
+
+  font-size: 14px;
+  padding:7px;
+
+}
