@@ -13,7 +13,10 @@ class SensorChooseWindowComponentElement extends Component {
   ChooseSensorType(){
 
       console.log('ChooseSensorName()2');
-
+      let str = ReactDOM.findDOMNode(this).id;
+      let id = str[str.indexOf("rId-")+4];
+      let sens = str.slice(18,str.indexOf("_"));
+      this.props.Vm.runtime.sens_list[+id]=sens;
       this.props.onSensorNameChoosen(ReactDOM.findDOMNode(this).id);
 
       ;

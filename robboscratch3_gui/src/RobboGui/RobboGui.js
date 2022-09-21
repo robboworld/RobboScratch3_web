@@ -12,6 +12,7 @@ import {ActionSearchLaboratoryDevices} from './actions/sensor_actions';
 import {ActionRobotStopSearchProcess} from './actions/sensor_actions';
 import {ActionRobotStopDataRecievingProcess}  from './actions/sensor_actions';
 import {ActionTriggerExtensionPack} from './actions/sensor_actions';
+import {ActionTriggerSim} from './actions/sensor_actions';
 import {ActionTriggerColorCorrectorTable} from './actions/sensor_actions';
 //import {ActionTriggerNeedLanguageReload} from './actions/sensor_actions';
 
@@ -286,8 +287,7 @@ class RobboGui extends Component {
           <div className={styles.version}> </div>
 
          {
-              (!this.props.sensorsPalette.sensors_pallete_collapsed)?  <SensorPallete RCA={this.RCA} LCA={this.LCA} QCA={this.QCA} OCA={this.OCA} ACA={this.ACA} ECA={this.ECA} />: <SensorPaletteCollapsed />
-
+             (!this.props.sensorsPalette.sensors_pallete_collapsed)? <SensorPallete RCA={this.RCA} LCA={this.LCA} QCA={this.QCA} OCA={this.OCA} ACA={this.ACA} VM={this.props.vm}/>: <SensorPaletteCollapsed />
 
          }
 
@@ -308,7 +308,8 @@ class RobboGui extends Component {
            top={this.props.sensorsChooseWindow.sensors_choose_window_drag_top} left={this.props.sensorsChooseWindow.sensors_choose_window_drag_left}
            CallerSensorId={this.props.sensorsChooseWindow.sensors_choose_window_sensor_caller}
            SensorCallerDeviceName={this.props.sensorsChooseWindow.sensors_choose_window_sensor_caller_device_name}
-           CallerSensorType={this.props.sensorsChooseWindow.sensors_choose_window_sensor_caller_type}/>
+           CallerSensorType={this.props.sensorsChooseWindow.sensors_choose_window_sensor_caller_type}
+           Vm={this.props.vm}/>
 
 
 
@@ -392,6 +393,10 @@ const mapDispatchToProps = dispatch => ({
         dispatch(ActionTriggerExtensionPack());
       },
 
+      onTriggerSimEn: () => {
+
+        dispatch(ActionTriggerSim());
+      },
 
       onTriggerColorCorrectorTable:  (sensor_caller_id) => {
 

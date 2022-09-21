@@ -36,7 +36,7 @@ class SensorChooseWindowComponent extends Component {
 
   render() {
 
-    const { connectDragSource, isDragging, isShowing,top,left,CallerSensorId,SensorCallerDeviceName,CallerSensorType } = this.props;
+    const { connectDragSource, isDragging, isShowing,top,left,CallerSensorId,SensorCallerDeviceName,CallerSensorType, Vm } = this.props;
 
     //let showing_state = isShowing? styles.sensor_choose_window.window_show: styles.sensor_choose_window.window_hide;
   //  let final_state = isDragging? styles.sensor_choose_window.window_show.window_drag:showing_state;
@@ -99,7 +99,7 @@ class SensorChooseWindowComponent extends Component {
 
                                 {
 
-                                  elements.push(<SensorChooseWindowComponentElement deviceName={`${SensorCallerDeviceName}`} sensorName={`${sensor_name}`} key={`SensorChooseWindowComponentElement-${index}`} sensorPictureUrl={`./static/robbo_assets/32/${SensorCallerDeviceName}_sensor_${sensor_name}.png`}
+                                  elements.push(<SensorChooseWindowComponentElement Vm={Vm} deviceName={`${SensorCallerDeviceName}`} sensorName={`${sensor_name}`} key={`SensorChooseWindowComponentElement-${index}`} sensorPictureUrl={`./static/robbo_assets/32/${SensorCallerDeviceName}_sensor_${sensor_name}.png`}
                                     CallerSensorId={CallerSensorId}/>);
 
 

@@ -2,194 +2,233 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styles from './RobboMenu.css';
 import classNames from 'classnames';
-import {ActionTriggerExtensionPack} from './actions/sensor_actions';
-import {ActionTriggerLabExtSensors} from  './actions/sensor_actions';
-import {ActionTriggerColorCorrectorTable} from './actions/sensor_actions';
-import {ActionTriggerDraggableWindow} from './actions/sensor_actions';
-import {ActionTriggerRobboMenu} from './actions/sensor_actions.js'; 
-import {ActionTriggerNewDraggableWindow} from './actions/sensor_actions'
+import costumeLibraryContent from '../lib/libraries/costumes.json';
+import spriteLibraryContent from '../lib/libraries/sprites.json';
+import { ActionTriggerSim } from './actions/sensor_actions';
+import { ActionTriggerExtensionPack } from './actions/sensor_actions';
+import { ActionTriggerLabExtSensors } from './actions/sensor_actions';
+import { ActionTriggerColorCorrectorTable } from './actions/sensor_actions';
+import { ActionTriggerDraggableWindow } from './actions/sensor_actions';
+import { ActionTriggerRobboMenu } from './actions/sensor_actions.js';
+import { ActionTriggerNewDraggableWindow } from './actions/sensor_actions'
+import Blocks from '../containers/blocks.jsx';
+import { defineMessages, intlShape, injectIntl, FormattedMessage } from 'react-intl';
 
-import {defineMessages, intlShape, injectIntl, FormattedMessage} from 'react-intl';
-
-import {createDiv,createDivShort} from './lib/lib.js';
+import { createDiv, createDivShort } from './lib/lib.js';
 
 //import Blockly_Arduino from 'blocks-compiler';
 
 
 const messages = defineMessages({
-    extension_pack: {
-        id: 'gui.RobboMenu.extension_pack',
-        description: ' ',
-        defaultMessage: 'Extension pack '
-    },
-    extension_pack_enable: {
-        id: 'gui.RobboMenu.extension_pack_enable',
-        description: ' ',
-        defaultMessage: 'Включить расширенный набор датчиков робота'
-    },
-    extension_pack_disable: {
-        id: 'gui.RobboMenu.extension_pack_disable',
-        description: ' ',
-        defaultMessage: 'Выключить расширенный набор датчиков робота'
-    }, 
-    lab_ext_sensors: {
-        id: 'gui.RobboMenu.lab_ext_sensors',
-        description: ' ',
-        defaultMessage: 'Laboratory external sensors'
-    },
-      lab_ext_sensors_enable: {
-        id: 'gui.RobboMenu.lab_ext_sensors_enable',
-        description: ' ',
-        defaultMessage: 'Включить внешние датчики лаборатории'
-    },
-     lab_ext_sensors_disable: {
-        id: 'gui.RobboMenu.lab_ext_sensors_disable',
-        description: ' ',
-        defaultMessage: 'Выключить внешние датчики лаборатории'
-    }, 
-    trigger_logging:{
+  sim_en: {
+    id: 'gui.RobboMenu.sim_en',
+    description: '',
+    defaultMessage: 'Enable Simulator'
+  },
+  extension_pack: {
+    id: 'gui.RobboMenu.extension_pack',
+    description: ' ',
+    defaultMessage: 'Extension pack '
+  },
+  sim_enable: {
+    id: 'gui.RobboMenu.sim_enable',
+    description: ' ',
+    defaultMessage: 'Включить симуляцию робота'
+  },
+  sim_disable: {
+    id: 'gui.RobboMenu.sim_disable',
+    description: ' ',
+    defaultMessage: 'Выключить симуляцию робота'
+  },
+  extension_pack_enable: {
+    id: 'gui.RobboMenu.extension_pack_enable',
+    description: ' ',
+    defaultMessage: 'Включить расширенный набор датчиков робота'
+  },
+  extension_pack_disable: {
+    id: 'gui.RobboMenu.extension_pack_disable',
+    description: ' ',
+    defaultMessage: 'Выключить расширенный набор датчиков робота'
+  },
+  lab_ext_sensors: {
+    id: 'gui.RobboMenu.lab_ext_sensors',
+    description: ' ',
+    defaultMessage: 'Laboratory external sensors'
+  },
+  lab_ext_sensors_enable: {
+    id: 'gui.RobboMenu.lab_ext_sensors_enable',
+    description: ' ',
+    defaultMessage: 'Включить внешние датчики лаборатории'
+  },
+  lab_ext_sensors_disable: {
+    id: 'gui.RobboMenu.lab_ext_sensors_disable',
+    description: ' ',
+    defaultMessage: 'Выключить внешние датчики лаборатории'
+  },
+  trigger_logging: {
 
-      id: 'gui.RobboMenu.trigger_logging',
-      description: ' ',
-      defaultMessage: 'Trigger logging'
+    id: 'gui.RobboMenu.trigger_logging',
+    description: ' ',
+    defaultMessage: 'Trigger logging'
 
-    },
-    trigger_firmware_flasher:{
+  },
+  trigger_firmware_flasher: {
 
-      id: 'gui.RobboMenu.trigger_firmware_flasher',
-      description: ' ',
-      defaultMessage: 'Trigger firmware flasher'
+    id: 'gui.RobboMenu.trigger_firmware_flasher',
+    description: ' ',
+    defaultMessage: 'Trigger firmware flasher'
 
-    },
-    trigger_settings_window:{
+  },
+  trigger_settings_window: {
 
-      id: 'gui.RobboMenu.trigger_settings_window',
-      description: ' ',
-      defaultMessage: 'Настройки'
+    id: 'gui.RobboMenu.trigger_settings_window',
+    description: ' ',
+    defaultMessage: 'Настройки'
 
-    },
-    trigger_about_window:{
+  },
+  trigger_about_window: {
 
-      id: 'gui.RobboMenu.trigger_about_window',
-      description: ' ',
-      defaultMessage: 'О программе'
+    id: 'gui.RobboMenu.trigger_about_window',
+    description: ' ',
+    defaultMessage: 'О программе'
 
-    },
-    color_sensor_correction1:{
+  },
+  color_sensor_correction1: {
 
-      id: 'gui.RobboMenu.color_sensor_correction1',
-      description: ' ',
-      defaultMessage: 'Color sensor correction 1'
+    id: 'gui.RobboMenu.color_sensor_correction1',
+    description: ' ',
+    defaultMessage: 'Color sensor correction 1'
 
-    },
-    color_sensor_correction2:{
+  },
+  color_sensor_correction2: {
 
-      id: 'gui.RobboMenu.color_sensor_correction2',
-      description: ' ',
-      defaultMessage: 'Color sensor correction 2'
+    id: 'gui.RobboMenu.color_sensor_correction2',
+    description: ' ',
+    defaultMessage: 'Color sensor correction 2'
 
-    },
-    color_sensor_correction3:{
+  },
+  color_sensor_correction3: {
 
-      id: 'gui.RobboMenu.color_sensor_correction3',
-      description: ' ',
-      defaultMessage: 'Color sensor correction 3'
+    id: 'gui.RobboMenu.color_sensor_correction3',
+    description: ' ',
+    defaultMessage: 'Color sensor correction 3'
 
-    },
-    color_sensor_correction4:{
+  },
+  color_sensor_correction4: {
 
-      id: 'gui.RobboMenu.color_sensor_correction4',
-      description: ' ',
-      defaultMessage: 'Color sensor correction 4'
+    id: 'gui.RobboMenu.color_sensor_correction4',
+    description: ' ',
+    defaultMessage: 'Color sensor correction 4'
 
-    },
-    color_sensor_correction5:{
+  },
+  color_sensor_correction5: {
 
-      id: 'gui.RobboMenu.color_sensor_correction5',
-      description: ' ',
-      defaultMessage: 'Color sensor correction 5'
+    id: 'gui.RobboMenu.color_sensor_correction5',
+    description: ' ',
+    defaultMessage: 'Color sensor correction 5'
 
-    },
-    iot_connection: {
-      id: 'gui.RobboMenu.iot_connection',
-      description: ' ',
-      defaultMessage: 'Iot connection'
-    }
+  },
+  iot_connection: {
+    id: 'gui.RobboMenu.iot_connection',
+    description: ' ',
+    defaultMessage: 'Iot connection'
+  }
 });
 
 
 class RobboMenu extends Component {
 
-  constructor(){
+  constructor() {
     super();
-
+    this.is_sim_en = false;
     this.is_extension_pack_enabled = false;
     this.is_lab_ext_enabled = false;
 
   }
 
-  componentDidMount(){
+  componentDidMount() {
 
-       document.addEventListener('click', this.closeRobboMenu.bind(this));
+    document.addEventListener('click', this.closeRobboMenu.bind(this));
 
   }
 
 
-  searchDevices(){
+  searchDevices() {
 
     console.log("searchDevices");
 
 
-  //  this.DCA.searchAllDevices();
+    //  this.DCA.searchAllDevices();
 
 
 
-  //  this.RCA.searchRobotDevices();
-//    this.LCA.searchLaboratoryDevices();
+    //  this.RCA.searchRobotDevices();
+    //    this.LCA.searchLaboratoryDevices();
 
-//    this.QCA.searchQuadcopterDevices();
+    //    this.QCA.searchQuadcopterDevices();
 
   }
 
-  stopSearchProcess(){
+  stopSearchProcess() {
 
     console.log("stopSearchProcess");
-  //  this.props.stopSearchProcess(this.props.vm.getRCA());
+    //  this.props.stopSearchProcess(this.props.vm.getRCA());
 
-  this.RCA.stopSearchProcess();
-  this.LCA.stopSearchProcess();
+    this.RCA.stopSearchProcess();
+    this.LCA.stopSearchProcess();
 
 
   }
 
-  stopDataRecievingProcess(){
+  stopDataRecievingProcess() {
 
 
     console.log("stopDataRecievingProcess");
-  //  this.props.stopDataRecievingProcess(this.props.vm.getRCA());
+    //  this.props.stopDataRecievingProcess(this.props.vm.getRCA());
 
-  this.RCA.stopDataRecievingProcess();
-  this.LCA.stopDataRecievingProcess();
+    this.RCA.stopDataRecievingProcess();
+    this.LCA.stopDataRecievingProcess();
 
   }
 
-  closeRobboMenu(e){
+  closeRobboMenu(e) {
 
     let trigger_menu = document.getElementById(`trigger-robbo-menu`);
     let menu = document.getElementById(`robbo-menu`);
 
-    if ( ( this.props.robbo_menu.isShowing) && (!trigger_menu.contains(e.target)) && (!menu.contains(e.target)) ){
+    if ((this.props.robbo_menu.isShowing) && (!trigger_menu.contains(e.target)) && (!menu.contains(e.target))) {
 
-       /* && (e.target !== trigger_menu) && (e.target !== menu)*/
+      /* && (e.target !== trigger_menu) && (e.target !== menu)*/
 
-        this.props.onTriggerRobboMenu();
+      this.props.onTriggerRobboMenu();
 
     }
 
-     
+
   }
 
-  triggerExtensionPack(){
+  triggerSimEn() {
+    const item = spriteLibraryContent[12];
+    item.name = "Robbo Robot";
+    this.is_sim_en = !this.is_sim_en;
+    this.props.VM.runtime.sim_ac = !this.props.VM.runtime.sim_ac;
+    console.warn(this.props.VM.editingTarget);
+    this.props.VM.runtime.util = this.props.VM.editingTarget;
+    if (this.props.VM.runtime.sim_ac) {
+      //        let promise = new Promise(resolve => {
+      this.props.VM.addSprite(item.json);
+
+      //          console.warn(this.props.send_workspace);
+      //          let workspace = this.props.send_workspace.workspace;
+      //          console.warn("WORKSPACE!!!");
+      //          console.warn(workspace);
+
+      //        }
+    }
+    this.props.onTriggerSimEn();
+  }
+
+  triggerExtensionPack() {
 
     console.log("triggerExtensionPack");
     this.props.onTriggerExtensionPack();
@@ -199,7 +238,7 @@ class RobboMenu extends Component {
 
   }
 
-  triggerLabExtSensors(){
+  triggerLabExtSensors() {
 
     console.log("triggerLabExtSensors");
     this.props.onTriggerLabExtSensors();
@@ -208,49 +247,49 @@ class RobboMenu extends Component {
 
   }
 
-  triggerColorCorrectorTable(sensor_caller_id){
+  triggerColorCorrectorTable(sensor_caller_id) {
 
     console.log("triggerColorCorrectorTable");
     this.props.onTriggerColorCorrectorTable(sensor_caller_id);
 
   }
 
-  triggerLogging(){
+  triggerLogging() {
 
-        console.log("triggerLogging");
-        this.DCA.triggerLogging();
-
-       
-
-  }
-
-  triggerFirmwareFlasher(){
+    console.log("triggerLogging");
+    this.DCA.triggerLogging();
 
 
-        this.props.onTriggerFirmwareFlasher();
 
   }
 
-  triggerSettingsWindow(){
+  triggerFirmwareFlasher() {
+
+
+    this.props.onTriggerFirmwareFlasher();
+
+  }
+
+  triggerSettingsWindow() {
 
     this.props.onTriggerSettingsWindow();
 
   }
 
-  triggerAboutWindow(){
+  triggerAboutWindow() {
 
-      this.props.onTriggerAboutWindow("about-window");
+    this.props.onTriggerAboutWindow("about-window");
   }
 
   triggerIotConnectionWindow() {
     this.props.onTriggerIotConnection("iot_connection")
   }
 
-  
 
-  enableProfiling(){
 
-     let profiler_window_content_body = document.getElementById(`profiler-window-content-body`);
+  enableProfiling() {
+
+    let profiler_window_content_body = document.getElementById(`profiler-window-content-body`);
     profiler_window_content_body.innerHTML = "";
 
     let time_counter = 0;
@@ -267,128 +306,128 @@ class RobboMenu extends Component {
     let recieve_time_delta_sum = 0;
     let recieve_time_delta_average = 0;
 
-    let profiler_window_average_time_field =  document.getElementById("profiler-window-average-time");
+    let profiler_window_average_time_field = document.getElementById("profiler-window-average-time");
 
-      this.props.VM.runtime.enableProfiling((frame) => {
+    this.props.VM.runtime.enableProfiling((frame) => {
 
-            // console.warn("frame: ");
-            // console.warn(frame);
+      // console.warn("frame: ");
+      // console.warn(frame);
 
-            //let frame_id = frame.id;
+      //let frame_id = frame.id;
 
-             let frame_id = this.props.VM.runtime.profiler.nameById(frame.id);
+      let frame_id = this.props.VM.runtime.profiler.nameById(frame.id);
 
-              if (frame_id == "Runtime._step"){
+      if (frame_id == "Runtime._step") {
 
-                time_counter++;
+        time_counter++;
 
-                self_time_summ+= frame.selfTime;
-                total_time_summ+= frame.totalTime;
+        self_time_summ += frame.selfTime;
+        total_time_summ += frame.totalTime;
 
-                 recieve_time_delta = this.RCA.getRecieveTimeDelta();
-                 recieve_time_delta_sum+= recieve_time_delta;
+        recieve_time_delta = this.RCA.getRecieveTimeDelta();
+        recieve_time_delta_sum += recieve_time_delta;
 
-              //   if (time_counter == 5){
+        //   if (time_counter == 5){
 
-              //      recieve_time_delta = this.RCA.getRecieveTimeDelta().toFixed(7);
+        //      recieve_time_delta = this.RCA.getRecieveTimeDelta().toFixed(7);
 
-              //       profiler_window_average_time_field.innerHTML = `<div>Runtime._step total_time:${average_total_time} self_time: ${average_self_time} </div>
-              //                                                       <div>Recieve time delta: ${recieve_time_delta}</div>
-              //                                                       <div>Recieve time delta average: ${recieve_time_delta_average}</div>`;
+        //       profiler_window_average_time_field.innerHTML = `<div>Runtime._step total_time:${average_total_time} self_time: ${average_self_time} </div>
+        //                                                       <div>Recieve time delta: ${recieve_time_delta}</div>
+        //                                                       <div>Recieve time delta average: ${recieve_time_delta_average}</div>`;
 
-              //  }
+        //  }
 
-                if (time_counter == 100){
+        if (time_counter == 100) {
 
-                    average_self_time = (self_time_summ / time_counter).toFixed(7);
-                    average_total_time = (total_time_summ / time_counter).toFixed(7);
+          average_self_time = (self_time_summ / time_counter).toFixed(7);
+          average_total_time = (total_time_summ / time_counter).toFixed(7);
 
-                    recieve_time_delta_average = ( recieve_time_delta_sum / time_counter).toFixed(7);
+          recieve_time_delta_average = (recieve_time_delta_sum / time_counter).toFixed(7);
 
-                    time_counter = 0;
+          time_counter = 0;
 
-                  
 
-                    profiler_window_average_time_field.innerHTML = `<div>Runtime._step total_time:${average_total_time} self_time: ${average_self_time} </div>
+
+          profiler_window_average_time_field.innerHTML = `<div>Runtime._step total_time:${average_total_time} self_time: ${average_self_time} </div>
                                                                     <div>Recieve time delta: ${recieve_time_delta}</div>
                                                                     <div>Recieve time delta average: ${recieve_time_delta_average}</div>`;
 
-                    self_time_summ = 0;
-                    total_time_summ = 0;
-                    recieve_time_delta_sum = 0;
-                }
+          self_time_summ = 0;
+          total_time_summ = 0;
+          recieve_time_delta_sum = 0;
+        }
 
-              }
+      }
 
-               //if (frame_id != "Runtime._step") return;
+      //if (frame_id != "Runtime._step") return;
 
-               return;
+      return;
 
-             let total_time = frame.totalTime.toFixed(7);
+      let total_time = frame.totalTime.toFixed(7);
 
-             let self_time = frame.selfTime.toFixed(7);
-
-
-            if (steps_ids_list.indexOf(frame_id) == -1){
-
-              steps_ids_list.push(frame_id);
-
-              var styles = {
-
-                margin: '10px'
-
-              };
-
-                let  profiler_window_content_body_row = createDivShort(profiler_window_content_body,styles,"",{id:`profiler_window_content_body_row-${frame_id}`});
-
-                
-                
-                let column_style = {
-
-                    marginLeft:'7px',
-
-                    marginRight:'7px',
-
-                    display:'inline-block',
-
-                    minWidth: '100px'
-                }
-
-                 createDivShort(profiler_window_content_body_row,column_style,"",{id:`profiler_window_content_body_row-${frame_id}-column_id`});      
-
-                 createDivShort(profiler_window_content_body_row,column_style,self_time,{id:`profiler_window_content_body_row-${frame_id}-column_self_time`});      
-
-                 createDivShort(profiler_window_content_body_row,column_style,total_time,{id:`profiler_window_content_body_row-${frame_id}-column_total_time`});      
-              
-
-            }else{
-
-                let profiler_window_content_body_row_column_id =  document.getElementById(`profiler_window_content_body_row-${frame_id}-column_id`); 
-                profiler_window_content_body_row_column_id.innerHTML = frame_id;
+      let self_time = frame.selfTime.toFixed(7);
 
 
-                let profiler_window_content_body_row_column_self_time = document.getElementById(`profiler_window_content_body_row-${frame_id}-column_self_time`); 
-                profiler_window_content_body_row_column_self_time.innerHTML = self_time;
+      if (steps_ids_list.indexOf(frame_id) == -1) {
+
+        steps_ids_list.push(frame_id);
+
+        var styles = {
+
+          margin: '10px'
+
+        };
+
+        let profiler_window_content_body_row = createDivShort(profiler_window_content_body, styles, "", { id: `profiler_window_content_body_row-${frame_id}` });
 
 
-                let profiler_window_content_body_row_column_total_time = document.getElementById(`profiler_window_content_body_row-${frame_id}-column_total_time`); 
-                profiler_window_content_body_row_column_total_time.innerHTML = total_time;
+
+        let column_style = {
+
+          marginLeft: '7px',
+
+          marginRight: '7px',
+
+          display: 'inline-block',
+
+          minWidth: '100px'
+        }
+
+        createDivShort(profiler_window_content_body_row, column_style, "", { id: `profiler_window_content_body_row-${frame_id}-column_id` });
+
+        createDivShort(profiler_window_content_body_row, column_style, self_time, { id: `profiler_window_content_body_row-${frame_id}-column_self_time` });
+
+        createDivShort(profiler_window_content_body_row, column_style, total_time, { id: `profiler_window_content_body_row-${frame_id}-column_total_time` });
 
 
-            }
+      } else {
 
-            
-  
+        let profiler_window_content_body_row_column_id = document.getElementById(`profiler_window_content_body_row-${frame_id}-column_id`);
+        profiler_window_content_body_row_column_id.innerHTML = frame_id;
 
-        });
+
+        let profiler_window_content_body_row_column_self_time = document.getElementById(`profiler_window_content_body_row-${frame_id}-column_self_time`);
+        profiler_window_content_body_row_column_self_time.innerHTML = self_time;
+
+
+        let profiler_window_content_body_row_column_total_time = document.getElementById(`profiler_window_content_body_row-${frame_id}-column_total_time`);
+        profiler_window_content_body_row_column_total_time.innerHTML = total_time;
+
+
+      }
+
+
+
+
+    });
   }
 
-  disableProfiling(){
+  disableProfiling() {
 
-       this.props.VM.runtime.disableProfiling();
+    this.props.VM.runtime.disableProfiling();
   }
 
-  triggerProfilerWindow(){
+  triggerProfilerWindow() {
 
     this.props.onTriggerProfilerWindow("profiler-window");
 
@@ -396,49 +435,53 @@ class RobboMenu extends Component {
 
   render() {
 
-//  return this.props.connectDropTarget(
+    //  return this.props.connectDropTarget(
 
-  this.DCA =  this.props.VM.getDCA();
-  this.RCA =  this.props.VM.getRCA();
-  this.LCA =  this.props.VM.getLCA();
+    this.DCA = this.props.VM.getDCA();
+    this.RCA = this.props.VM.getRCA();
+    this.LCA = this.props.VM.getLCA();
 
-  return (
+    return (
 
 
       <div id="robbo-menu" className={classNames(
 
-                    {[styles.robbo_menu]: true},
-                    {[styles.robbo_menu_show]:   this.props.robbo_menu.isShowing},
-                    {[styles.robbo_menu_hidden]: !this.props.robbo_menu.isShowing}
+        { [styles.robbo_menu]: true },
+        { [styles.robbo_menu_show]: this.props.robbo_menu.isShowing },
+        { [styles.robbo_menu_hidden]: !this.props.robbo_menu.isShowing }
 
 
-                    )}>
-
-
-
+      )}>
 
 
 
+        <div id="trigger-sim-en" onClick={this.triggerSimEn.bind(this)} className={classNames(
 
-          <div id="trigger-extension-pack" onClick={this.triggerExtensionPack.bind(this)} className={classNames(
+          { [styles.robbo_menu_item]: true }
 
-                        {[styles.robbo_menu_item]: true}
+        )}>{(this.is_sim_en) ? this.props.intl.formatMessage(messages.sim_disable) : this.props.intl.formatMessage(messages.sim_enable)}</div>
 
-                      )}>{ (this.is_extension_pack_enabled)?this.props.intl.formatMessage(messages.extension_pack_disable):this.props.intl.formatMessage(messages.extension_pack_enable)  }</div>
 
-                        <div id="trigger-lab-ext-sensors" onClick={this.triggerLabExtSensors.bind(this)} className={classNames(
 
-                        {[styles.robbo_menu_item]: true}
+        <div id="trigger-extension-pack" onClick={this.triggerExtensionPack.bind(this)} className={classNames(
 
-                      )}>{ (this.is_lab_ext_enabled)?this.props.intl.formatMessage(messages.lab_ext_sensors_disable):this.props.intl.formatMessage(messages.lab_ext_sensors_enable)  } </div>
+          { [styles.robbo_menu_item]: true }
 
-                 {/*   <div id="trigger-logging" onClick={this.triggerLogging.bind(this)} className={classNames(
+        )}>{(this.is_extension_pack_enabled) ? this.props.intl.formatMessage(messages.extension_pack_disable) : this.props.intl.formatMessage(messages.extension_pack_enable)}</div>
+
+        <div id="trigger-lab-ext-sensors" onClick={this.triggerLabExtSensors.bind(this)} className={classNames(
+
+          { [styles.robbo_menu_item]: true }
+
+        )}>{(this.is_lab_ext_enabled) ? this.props.intl.formatMessage(messages.lab_ext_sensors_disable) : this.props.intl.formatMessage(messages.lab_ext_sensors_enable)} </div>
+
+        {/*   <div id="trigger-logging" onClick={this.triggerLogging.bind(this)} className={classNames(
 
                       {[styles.robbo_menu_item]: true}
 
                     )}> {this.props.intl.formatMessage(messages.trigger_logging)} </div> */}
 
-                {/*  <div id="trigger-firmware-flasher" onClick={this.triggerFirmwareFlasher.bind(this)} className={classNames(
+        {/*  <div id="trigger-firmware-flasher" onClick={this.triggerFirmwareFlasher.bind(this)} className={classNames(
 
                       {[styles.robbo_menu_item]: true}
 
@@ -447,41 +490,41 @@ class RobboMenu extends Component {
 
 
 
-                  <hr className={styles.hrDevider}/>
+        <hr className={styles.hrDevider} />
 
-          <div id="trigger-color-corrector-table-0" onClick={this.triggerColorCorrectorTable.bind(this,0)} className={classNames(
+        <div id="trigger-color-corrector-table-0" onClick={this.triggerColorCorrectorTable.bind(this, 0)} className={classNames(
 
-                        {[styles.robbo_menu_item]: true}
+          { [styles.robbo_menu_item]: true }
 
-                      )}> {this.props.intl.formatMessage(messages.color_sensor_correction1)} </div>
+        )}> {this.props.intl.formatMessage(messages.color_sensor_correction1)} </div>
 
-          <div id="trigger-color-corrector-table-1" onClick={this.triggerColorCorrectorTable.bind(this,1)} className={classNames(
+        <div id="trigger-color-corrector-table-1" onClick={this.triggerColorCorrectorTable.bind(this, 1)} className={classNames(
 
-                        {[styles.robbo_menu_item]: true}
+          { [styles.robbo_menu_item]: true }
 
-                      )}>{this.props.intl.formatMessage(messages.color_sensor_correction2)} </div>
+        )}>{this.props.intl.formatMessage(messages.color_sensor_correction2)} </div>
 
-          <div id="trigger-color-corrector-table-2" onClick={this.triggerColorCorrectorTable.bind(this,2)} className={classNames(
+        <div id="trigger-color-corrector-table-2" onClick={this.triggerColorCorrectorTable.bind(this, 2)} className={classNames(
 
-                        {[styles.robbo_menu_item]: true}
+          { [styles.robbo_menu_item]: true }
 
-                      )}>{this.props.intl.formatMessage(messages.color_sensor_correction3)} </div>
+        )}>{this.props.intl.formatMessage(messages.color_sensor_correction3)} </div>
 
-          <div id="trigger-color-corrector-table-3" onClick={this.triggerColorCorrectorTable.bind(this,3)} className={classNames(
+        <div id="trigger-color-corrector-table-3" onClick={this.triggerColorCorrectorTable.bind(this, 3)} className={classNames(
 
-                        {[styles.robbo_menu_item]: true}
+          { [styles.robbo_menu_item]: true }
 
-                      )}> {this.props.intl.formatMessage(messages.color_sensor_correction4)} </div>
+        )}> {this.props.intl.formatMessage(messages.color_sensor_correction4)} </div>
 
-          <div id="trigger-color-corrector-table-4" onClick={this.triggerColorCorrectorTable.bind(this,4)} className={classNames(
+        <div id="trigger-color-corrector-table-4" onClick={this.triggerColorCorrectorTable.bind(this, 4)} className={classNames(
 
-                        {[styles.robbo_menu_item]: true}
+          { [styles.robbo_menu_item]: true }
 
-                      )}>{this.props.intl.formatMessage(messages.color_sensor_correction5)} </div>
+        )}>{this.props.intl.formatMessage(messages.color_sensor_correction5)} </div>
 
-          <hr className={styles.hrDevider}/>    
+        <hr className={styles.hrDevider} />
 
-               {/*  <div id="enable-profiling" onClick={this.enableProfiling.bind(this)} className={classNames(
+        {/*  <div id="enable-profiling" onClick={this.enableProfiling.bind(this)} className={classNames(
 
                         {[styles.robbo_menu_item]: true}
 
@@ -497,96 +540,100 @@ class RobboMenu extends Component {
 
                         {[styles.robbo_menu_item]: true}
 
-                      )}>{"Trigger profiler window"} </div>   */}  
+                      )}>{"Trigger profiler window"} </div>   */}
 
-               <div id="trigger-settings-window" onClick={this.triggerSettingsWindow.bind(this)} className={classNames(
+        <div id="trigger-settings-window" onClick={this.triggerSettingsWindow.bind(this)} className={classNames(
 
-                        {[styles.robbo_menu_item]: true}
+          { [styles.robbo_menu_item]: true }
 
-                      )}>{this.props.intl.formatMessage(messages.trigger_settings_window)} </div>           
+        )}>{this.props.intl.formatMessage(messages.trigger_settings_window)} </div>
 
 
-              <div id="trigger-about-window" onClick={this.triggerAboutWindow.bind(this)} className={classNames(
+        <div id="trigger-about-window" onClick={this.triggerAboutWindow.bind(this)} className={classNames(
 
-                        {[styles.robbo_menu_item]: true}
+          { [styles.robbo_menu_item]: true }
 
-                      )}>{this.props.intl.formatMessage(messages.trigger_about_window)} </div>     
+        )}>{this.props.intl.formatMessage(messages.trigger_about_window)} </div>
 
-              <div id="trigger-iot-connection" onClick={this.triggerIotConnectionWindow.bind(this)} className={classNames(
+        <div id="trigger-iot-connection" onClick={this.triggerIotConnectionWindow.bind(this)} className={classNames(
 
-                        { [styles.robbo_menu_item]: true }
+          { [styles.robbo_menu_item]: true }
 
-                       )}>{this.props.intl.formatMessage(messages.iot_connection)}</div> 
+        )}>{this.props.intl.formatMessage(messages.iot_connection)}</div>
 
       </div>
 
 
 
-  );
+    );
 
 
+
+  }
 
 }
 
-}
-
-const mapStateToProps =  state => ({
+const mapStateToProps = state => ({
 
 
-    robbo_menu:state.scratchGui.robbo_menu,
-    robot_sensors:state.scratchGui.robot_sensors,
-    settings:state.scratchGui.settings
+  robbo_menu: state.scratchGui.robbo_menu,
+  robot_sensors: state.scratchGui.robot_sensors,
+  settings: state.scratchGui.settings
 
 
-  });
+});
 
 const mapDispatchToProps = dispatch => ({
 
+  onTriggerSimEn: () => {
 
-    onTriggerExtensionPack: () => {
+    dispatch(ActionTriggerSim());
+  },
 
-        dispatch(ActionTriggerExtensionPack());
-      },
+  onTriggerExtensionPack: () => {
 
-    onTriggerLabExtSensors: () => {
+    dispatch(ActionTriggerExtensionPack());
+  },
 
-          dispatch(ActionTriggerLabExtSensors());
-        },
+  onTriggerLabExtSensors: () => {
+
+    dispatch(ActionTriggerLabExtSensors());
+  },
 
 
-    onTriggerColorCorrectorTable:  (sensor_caller_id) => {
+  onTriggerColorCorrectorTable: (sensor_caller_id) => {
 
-          dispatch(ActionTriggerColorCorrectorTable(sensor_caller_id));
-        },
+    dispatch(ActionTriggerColorCorrectorTable(sensor_caller_id));
+  },
 
-    onTriggerFirmwareFlasher: () => {
+  onTriggerFirmwareFlasher: () => {
 
-            dispatch(ActionTriggerDraggableWindow(3));
-          },
+    dispatch(ActionTriggerDraggableWindow(3));
+  },
 
-    onTriggerSettingsWindow: () => {
+  onTriggerSettingsWindow: () => {
 
-              dispatch(ActionTriggerDraggableWindow(4));
-            },
+    dispatch(ActionTriggerDraggableWindow(4));
+  },
 
-    onTriggerProfilerWindow: (window_id) => {
+  onTriggerProfilerWindow: (window_id) => {
 
-              dispatch(ActionTriggerNewDraggableWindow(window_id));
-            },
-    
-    onTriggerAboutWindow: (window_id) => {
+    dispatch(ActionTriggerNewDraggableWindow(window_id));
+  },
 
-              dispatch(ActionTriggerNewDraggableWindow(window_id));
-            },
-            
-    onTriggerIotConnection: (window_id) => {
-      
-      dispatch(ActionTriggerNewDraggableWindow(window_id));
-    },       
-    onTriggerRobboMenu: () => {
+  onTriggerAboutWindow: (window_id) => {
 
-      dispatch(ActionTriggerRobboMenu());
-    }        
+    dispatch(ActionTriggerNewDraggableWindow(window_id));
+  },
+
+  onTriggerIotConnection: (window_id) => {
+
+    dispatch(ActionTriggerNewDraggableWindow(window_id));
+  },
+  onTriggerRobboMenu: () => {
+
+    dispatch(ActionTriggerRobboMenu());
+  }
 
 });
 

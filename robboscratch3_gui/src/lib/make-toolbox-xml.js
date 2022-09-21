@@ -203,9 +203,47 @@ const iotBlocks = function () {
 }
 
 const newcat = function (isStage) {
-      const hello = ScratchBlocks.ScratchMsgs.translate('LOOKS_HELLO', 'Hello!');
+    const hello = ScratchBlocks.ScratchMsgs.translate('LOOKS_HELLO', 'Hello!');
     return `
     <category name="%{BKY_CATEGORY_ARDUINO}" id="newcat" colour="#5F9EA0" secondaryColour="#5F9EA0">
+
+    <block type="newcat_shag_init">
+        <value name="PIN1">
+          <shadow type="math_number">
+                <field name="NUM">8</field>
+          </shadow>
+        </value>
+        <value name="PIN2">
+          <shadow type="math_number">
+                <field name="NUM">9</field>
+          </shadow>
+        </value>
+        <value name="PIN3">
+          <shadow type="math_number">
+                <field name="NUM">10</field>
+          </shadow>
+        </value>
+        <value name="PIN4">
+          <shadow type="math_number">
+                <field name="NUM">11</field>
+          </shadow>
+        </value>
+        <value name="SHAG_TYPE">
+            <shadow type="shag_type"/>
+        </value>
+    </block>
+    <block type="newcat_set_shag">
+        <value name="SPEED">
+          <shadow type="math_number">
+              <field name="NUM">13</field>
+          </shadow>
+        </value>
+        <value name="SHAG">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+    </block>
 
         <block type="newcat_set_dig">
             <value name="PIN">
@@ -291,7 +329,7 @@ const newcat = function (isStage) {
 
         <block type="newcat_go_anal">
             <value name="PIN_ANAL">
-                <shadow type="pin_anal"/>
+                <shadow type="math_number"/>
             </value>
         </block>
 
@@ -352,11 +390,11 @@ const newcat = function (isStage) {
     `;
 };
 
-const otto = function (isStage, targetId){ //modified_by_Yaroslav  //otto category
+const otto = function (isStage, targetId) { //modified_by_Yaroslav  //otto category
 
-const hello = ScratchBlocks.ScratchMsgs.translate('LOOKS_HELLO', 'Hello!');
+    const hello = ScratchBlocks.ScratchMsgs.translate('LOOKS_HELLO', 'Hello!');
 
-return `
+    return `
   <category name="%{BKY_CATEGORY_OTTO}" id="otto" colour="#5D8C4D" secondaryColour="#5D8C4D">
 
   ${isStage ? `
@@ -496,16 +534,16 @@ return `
 
 };
 
-const quadcopter = function (isStage, targetId){ //modified_by_Yaroslav  //quadcopter category
+const quadcopter = function (isStage, targetId) { //modified_by_Yaroslav  //quadcopter category
 
-  const stageSelected = ScratchBlocks.ScratchMsgs.translate(
-      'MOTION_STAGE_SELECTED',
-      'Stage selected: no motion blocks'
-  );
+    const stageSelected = ScratchBlocks.ScratchMsgs.translate(
+        'MOTION_STAGE_SELECTED',
+        'Stage selected: no motion blocks'
+    );
 
-  //эти блоки доделать и вернуть
+    //эти блоки доделать и вернуть
 
-  let removed_block = `<block type="copter_fly_for_time_with_speed">
+    let removed_block = `<block type="copter_fly_for_time_with_speed">
           <value name="SECONDS">
               <shadow type="math_number">
                   <field name="NUM">1</field>
@@ -524,7 +562,7 @@ const quadcopter = function (isStage, targetId){ //modified_by_Yaroslav  //quadc
 
       </block>`;
 
-      let removed_block_2 = `<block type="copter_fly_for_seconds_to_coords">
+    let removed_block_2 = `<block type="copter_fly_for_seconds_to_coords">
           <value name="SECONDS">
               <shadow type="math_number">
                   <field name="NUM">1</field>
@@ -547,7 +585,7 @@ const quadcopter = function (isStage, targetId){ //modified_by_Yaroslav  //quadc
           </value>
       </block>`;
 
-  return `
+    return `
   <category name="%{BKY_CATEGORY_QUADCOPTER}" id="quadcopter" colour="#383838" secondaryColour="#383838">
 
   ${isStage ? `
@@ -679,14 +717,14 @@ const quadcopter = function (isStage, targetId){ //modified_by_Yaroslav  //quadc
 
 };
 
-const laboratory  = function (isStage, targetId,isExternalSensorsActivated) {  //modified_by_Yaroslav  //laboratory category
+const laboratory = function (isStage, targetId, isExternalSensorsActivated) {  //modified_by_Yaroslav  //laboratory category
 
-  const stageSelected = ScratchBlocks.ScratchMsgs.translate(
-      'MOTION_STAGE_SELECTED',
-      'Stage selected: no motion blocks'
-  );
+    const stageSelected = ScratchBlocks.ScratchMsgs.translate(
+        'MOTION_STAGE_SELECTED',
+        'Stage selected: no motion blocks'
+    );
 
-  return `
+    return `
   <category name="%{BKY_CATEGORY_LABORATORY}" id="laboratory" colour="#989898" secondaryColour="#989898">
       ${isStage ? `
       <label text="Stage selected: no laboratory blocks"></label>
@@ -738,15 +776,15 @@ const laboratory  = function (isStage, targetId,isExternalSensorsActivated) {  /
           </value>
       </block>
 
-        ${isExternalSensorsActivated?
+        ${isExternalSensorsActivated ?
 
-          ` <block type="lab_external_sensor">
+            ` <block type="lab_external_sensor">
                 <value name="LAB_EXTERNAL_SENSOR">
                     <shadow type="lab_external_sensors"/>
                 </value>
             </block>
 
-            `:``
+            `: ``
 
         }
 
@@ -793,14 +831,14 @@ const laboratory  = function (isStage, targetId,isExternalSensorsActivated) {  /
 
 }
 
-const robot  = function (isStage, targetId,isExtensionPackActivated,robot_is_scratchduino) {  //modified_by_Yaroslav  //robot category
+const robot = function (isStage, targetId, isExtensionPackActivated, is_sim_activated, robot_is_scratchduino) {  //modified_by_Yaroslav  //robot category
 
-  const stageSelected = ScratchBlocks.ScratchMsgs.translate(
-      'MOTION_STAGE_SELECTED',
-      'Stage selected: no motion blocks'
-  );
+    const stageSelected = ScratchBlocks.ScratchMsgs.translate(
+        'MOTION_STAGE_SELECTED',
+        'Stage selected: no motion blocks'
+    );
 
-  return `
+    return `
   <category name="%{BKY_CATEGORY_ROBOT}" id="robot" colour="#00AF41" secondaryColour="#00AF41">
       ${isStage ? `
       <label text="Stage selected: no robot blocks"></label>
@@ -927,9 +965,9 @@ const robot  = function (isStage, targetId,isExtensionPackActivated,robot_is_scr
             </value>
         </block>
 
-        ${isExtensionPackActivated?
+        ${(isExtensionPackActivated || is_sim_activated) ?
 
-          `<block type="robot_get_rgb_sensor_data">
+            `<block type="robot_get_rgb_sensor_data">
               <value name="ROBOT_SENSORS_FOR_RGB">
                   <shadow type="robot_sensors_for_rgb"/>
               </value>
@@ -948,13 +986,18 @@ const robot  = function (isStage, targetId,isExtensionPackActivated,robot_is_scr
           </block>
 
 
-          `:``
-
-
-
+          `: ``
+        }
+        ${is_sim_activated ?
+            `        <block type="robot_wall_color">
+                      <value name="COLOR">
+                          <shadow type="colour_picker"/>
+                      </value>
+                  </block>`: ``
         }
 
-
+        ${!is_sim_activated ?
+            `
 
         <block type="robot_start_button_pressed">
 
@@ -972,13 +1015,14 @@ const robot  = function (isStage, targetId,isExtensionPackActivated,robot_is_scr
             <value name="ROBOT_POSITION">
                 <shadow type="robot_positions"/>
             </value>
-        </block>
-
+        </block>`: ``
+        }
+        
         ${blockSeparator}
 
-        ${isExtensionPackActivated?
+        ${isExtensionPackActivated ?
 
-          `<block type="robot_claw_closed">
+            `<block type="robot_claw_closed">
                 <value name="CLAW_CLOSED_PERCENT">
                     <shadow type="math_number">
                         <field name="NUM">15</field>
@@ -990,7 +1034,7 @@ const robot  = function (isStage, targetId,isExtensionPackActivated,robot_is_scr
                 <value name="CLAW_STATES">
                     <shadow type="claw_states"/>
                 </value>
-            </block>`:``
+            </block>`: ``
 
         }
 
@@ -1140,11 +1184,11 @@ const motion = function (isStage, targetId) {
 const xmlEscape = function (unsafe) {
     return unsafe.replace(/[<>&'"]/g, c => {
         switch (c) {
-        case '<': return '&lt;';
-        case '>': return '&gt;';
-        case '&': return '&amp;';
-        case '\'': return '&apos;';
-        case '"': return '&quot;';
+            case '<': return '&lt;';
+            case '>': return '&gt;';
+            case '&': return '&amp;';
+            case '\'': return '&apos;';
+            case '"': return '&quot;';
         }
     });
 };
@@ -1721,7 +1765,7 @@ const xmlClose = '</xml>';
  * @param {?string} soundName -  The name of the default selected sound dropdown.
  * @returns {string} - a ScratchBlocks-style XML document for the contents of the toolbox.
  */
-const makeToolboxXML = function (isStage, targetId,config, categoriesXML,
+const makeToolboxXML = function (isStage, targetId, config, categoriesXML,
     costumeName = '', backdropName = '', soundName = '') {
     const gap = [categorySeparator];
 
@@ -1729,18 +1773,19 @@ const makeToolboxXML = function (isStage, targetId,config, categoriesXML,
     backdropName = xmlEscape(backdropName);
     soundName = xmlEscape(soundName);
 
-  var  isExternalSensorsActivated = false;
-  var  isExtensionPackActivated   = false;
-  var  robot_is_scratchduino      = false;
+    var isExternalSensorsActivated = false;
+    var isExtensionPackActivated = false;
+    var robot_is_scratchduino = false;
+    var is_sim_activated = false;
 
 
 
+    if (typeof (config) != 'undefined') {
 
-    if (typeof(config) != 'undefined'){
-
-      isExternalSensorsActivated = config.isExternalSensorsActivated;
-      isExtensionPackActivated   = config.isExtensionPackActivated;
-      robot_is_scratchduino      = config.robot_is_scratchduino;
+        isExternalSensorsActivated = config.isExternalSensorsActivated;
+        isExtensionPackActivated = config.isExtensionPackActivated;
+        is_sim_activated = config.is_sim_activated;
+        robot_is_scratchduino = config.robot_is_scratchduino;
 
 
     }
@@ -1748,10 +1793,10 @@ const makeToolboxXML = function (isStage, targetId,config, categoriesXML,
     const everything = [
         xmlOpen,
 
-        robot(false, targetId,isExtensionPackActivated,robot_is_scratchduino),gap, //modified_by_Yaroslav //toolbox generator main
-        laboratory(false, targetId,isExternalSensorsActivated),gap, //modified_by_Yaroslav
-      //  quadcopter(isStage, targetId), gap, //modified_by_Yaroslav
-       // otto(false, targetId), gap,
+        robot(false, targetId,isExtensionPackActivated,is_sim_activated,robot_is_scratchduino),gap, //modified_by_Yaroslav //toolbox generator main
+        laboratory(false, targetId, isExternalSensorsActivated), gap, //modified_by_Yaroslav
+        //  quadcopter(isStage, targetId), gap, //modified_by_Yaroslav
+        // otto(false, targetId), gap,
         //newcat(false),gap,
         iotBlocks(isStage, targetId),
         motion(isStage, targetId), gap,

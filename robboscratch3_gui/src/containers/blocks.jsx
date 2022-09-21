@@ -29,7 +29,8 @@ import {ActionUpdateIotBlockLogin,
     ActionUpdateIotBlockProtocol,
     ActionUpdateIotBlockAdress,
     ActionUpdateIotBlockPort,
-    ActionGenerateIotBlocks } from '../RobboGui/actions/sensor_actions';
+    ActionGenerateIotBlocks,
+    ActionSendWorkspace } from '../RobboGui/actions/sensor_actions';
 
 import {
     activateTab,
@@ -156,7 +157,9 @@ class Blocks extends React.Component {
             this.props.robbo_settings.is_lab_ext_enabled !== nextProps.robbo_settings.is_lab_ext_enabled ||  //not original
             this.props.robbo_settings.robot_is_scratchduino !== nextProps.robbo_settings.robot_is_scratchduino || //not original
             this.props.iotConnectionWindow !== nextProps.iotConnectionWindow ||
-            this.props.iot_blocks !== nextProps.iot_blocks 
+            this.props.iot_blocks !== nextProps.iot_blocks || 
+            this.props.robbo_settings.robot_is_scratchduino !==  nextProps.robbo_settings.robot_is_scratchduino|| //not original
+            this.props.robbo_settings.is_sim_activated      !==  nextProps.robbo_settings.is_sim_activated //not original
         );
     }
     componentDidUpdate(prevProps) {
@@ -195,7 +198,7 @@ class Blocks extends React.Component {
 
         //modified_by_Yaroslav
         if ((this.props.extension_pack.is_extension_pack_activated !== prevProps.extension_pack.is_extension_pack_activated) || (this.props.robbo_settings.is_lab_ext_enabled !== prevProps.robbo_settings.is_lab_ext_enabled)
-            || (this.props.robbo_settings.robot_is_scratchduino !== prevProps.robbo_settings.robot_is_scratchduino)) {
+            || (this.props.robbo_settings.robot_is_scratchduino !== prevProps.robbo_settings.robot_is_scratchduino) || (this.props.robbo_settings.is_sim_activated !== prevProps.robbo_settings.is_sim_activated) ){
 
             const dynamicBlocksXML = this.props.vm.runtime.getBlocksXML();
             const target = this.props.vm.editingTarget;
@@ -203,6 +206,7 @@ class Blocks extends React.Component {
             var config = {};
             config.isExternalSensorsActivated = this.props.robbo_settings.is_lab_ext_enabled;
             config.isExtensionPackActivated = this.props.extension_pack.is_extension_pack_activated;
+            config.is_sim_activated = this.props.robbo_settings.is_sim_activated;
             config.robot_is_scratchduino = this.props.robbo_settings.robot_is_scratchduino;
             config.locale = this.props.locale;
             config.messages = this.props.messages;
@@ -368,9 +372,11 @@ class Blocks extends React.Component {
         this.workspace.glowStack(data.id, false);
     }
     onBlockGlowOn(data) {
+        console.warn("onnn"+data);
         this.workspace.glowBlock(data.id, true);
     }
     onBlockGlowOff(data) {
+        console.warn("offf"+data);
         this.workspace.glowBlock(data.id, false);
     }
     onVisualReport(data) {
@@ -393,6 +399,7 @@ class Blocks extends React.Component {
             var config = {};
             config.isExternalSensorsActivated = this.props.robbo_settings.is_lab_ext_enabled;
             config.isExtensionPackActivated = this.props.extension_pack.is_extension_pack_activated;
+            config.is_sim_activated = this.props.robbo_settings.is_sim_activated;
             config.robot_is_scratchduino = this.props.robbo_settings.robot_is_scratchduino;
             config.locale = this.props.locale;
             config.messages = this.props.messages;

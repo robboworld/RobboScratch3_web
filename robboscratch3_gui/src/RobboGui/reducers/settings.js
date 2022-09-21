@@ -1,59 +1,60 @@
 const initialState = {
 
-  is_lab_ext_enabled:false,
-  robot_is_scratchduino:false
-
+  is_lab_ext_enabled: false,
+  robot_is_scratchduino: false,
+  is_sim_activated: false,
 
 
 };
 
-const  reducer = function (state, action) {
+const reducer = function (state, action) {
 
 
 
   if (typeof state === 'undefined') state = initialState;
 
 
-  let   settings_state = {};
+  let settings_state = {};
 
 
-switch (action.type) {
+  switch (action.type) {
 
-  case 'TRIGGER_LAB_EXT_SENSORS':
-
-
-  settings_state = Object.assign({}, state);
-
-  settings_state.is_lab_ext_enabled = !settings_state.is_lab_ext_enabled;
+    case 'TRIGGER_SIM_EN':
 
 
+      settings_state = Object.assign({}, state);
+      settings_state.is_sim_activated = !settings_state.is_sim_activated;
+      return settings_state;
+      break;
 
-  return   settings_state;
+    case 'TRIGGER_LAB_EXT_SENSORS':
 
-
-    break;
+      settings_state = Object.assign({}, state);
+      settings_state.is_lab_ext_enabled = !settings_state.is_lab_ext_enabled;
+      return settings_state;
+      break;
 
     case 'HIDE_NONE_SCRATCHDUINO_BLOCKS':
 
 
-    settings_state = Object.assign({}, state);
+      settings_state = Object.assign({}, state);
 
 
-    settings_state.robot_is_scratchduino = true;
+      settings_state.robot_is_scratchduino = true;
 
 
-    return   settings_state;
+      return settings_state;
 
     case 'SHOW_ROBBO_BLOCKS':
 
 
-    settings_state = Object.assign({}, state);
+      settings_state = Object.assign({}, state);
 
 
-    settings_state.robot_is_scratchduino = false;
+      settings_state.robot_is_scratchduino = false;
 
 
-    return   settings_state;
+      return settings_state;
 
 
       break;
@@ -75,11 +76,11 @@ switch (action.type) {
 
 
 
-  default:
+    default:
 
       return state;
 
-}
+  }
 
 
 
@@ -91,7 +92,7 @@ switch (action.type) {
 
 
 export {
-    reducer as default,
-    initialState as settings_InitialState
+  reducer as default,
+  initialState as settings_InitialState
 
 };

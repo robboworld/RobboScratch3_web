@@ -880,15 +880,15 @@
                     "baseLayerID": -1,
                     "baseLayerMD5": "b15c425f3eef68e7d095ee91321cb52a.svg",
                     "bitmapResolution": 1,
-                    "rotationCenterX": 26,
-                    "rotationCenterY": 26
+                    "rotationCenterX":102,
+                    "rotationCenterY": 97
                 }
             ],
             "currentCostumeIndex": 0,
-            "scratchX": 202,
-            "scratchY": -108,
-            "scale": 1,
-            "direction": 90,
+            "scratchX": 0,
+            "scratchY": 0,
+            "scale": 0.3,
+            "direction": 0,
             "rotationStyle": "normal",
             "isDraggable": false,
             "visible": true,

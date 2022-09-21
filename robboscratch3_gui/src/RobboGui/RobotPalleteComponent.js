@@ -147,10 +147,20 @@ componentDidUpdate(){
 
     if (this.props.draggable_window[1].isShowing == true){
 
+      if(!this.props.VM.runtime.sim_ac){
           sensors_values_field_list[0].innerHTML = this.props.RCA.getLeftPath();
           sensors_values_field_list[1].innerHTML = this.props.RCA.getRightPath();
           sensors_values_field_list[2].innerHTML = (this.props.RCA.getButtonStartPushed() == "true")?this.props.intl.formatMessage(messages.true):this.props.intl.formatMessage(messages.false);
+        }
+        else {
 
+          var bul = {};bul.ROBOT_SENSORS = 'sensor_trip_meter_left';
+          sensors_values_field_list[0].innerHTML = this.props.VM.runtime._primitives.robot_get_sensor_data(bul,null);
+          bul.ROBOT_SENSORS = 'sensor_trip_meter_right';
+          sensors_values_field_list[1].innerHTML = this.props.VM.runtime._primitives.robot_get_sensor_data(bul,null);
+          sensors_values_field_list[2].innerHTML = (this.props.RCA.getButtonStartPushed() == "true")?this.props.intl.formatMessage(messages.true):this.props.intl.formatMessage(messages.false);
+        }
+        }
 
           for (let index = 0; index < this.props.robot_sensors.length; index++ ){
 
@@ -161,7 +171,9 @@ componentDidUpdate(){
 
 
                 if (this.props.robot_sensors[index].sensor_name == "color"){
-
+                  if(this.props.VM.runtime.sim_ac)
+                    sensor_data = this.props.VM.runtime._primitives.getSensorDataFromLastUtil(index);
+              else
 
                       sensor_data = this.props.RCA.colorFilter(index);
 
@@ -184,9 +196,14 @@ componentDidUpdate(){
                       }
 
                 }else{
-
+                  if(this.props.VM.runtime.sim_ac)
+                  {
+                    sensor_data = this.props.VM.runtime._primitives.getSensorDataFromLastUtil(index);
+                  }
+                  else {
                       sensor_data = this.props.RCA.getSensorData(index);
-
+                  }
+                  if(typeof(sensor_data)!=='undefined'&&!isNaN(sensor_data))
                       sensors_values_field_list[3+index].innerHTML = sensor_data;
 
                 }
