@@ -5,7 +5,7 @@ import os.cmdline as cmd
 import term
 
 fn check_inst(util string) bool{
-    exec_res:= execute_or_exit("${util} --version")
+    exec_res:= execute_or_panic("${util} --version")
 
      if exec_res.exit_code != 0 {
        println("${util} is not installed.")
@@ -24,10 +24,11 @@ fn check_inst(util string) bool{
 fn check_dir(dir string, cur_dir string){
 
     //changes working directory
-    chdir(cur_dir) or {
-                   println(term.fail_message("check_dir: Error: ${err}"))
+    chdir(cur_dir) 
+    // or {
+    //                println(term.fail_message("check_dir: Error: ${err}"))
                   
-                 }
+    //              }
    
 
     if exists(dir) {
@@ -53,10 +54,11 @@ fn check_dir(dir string, cur_dir string){
 }
 
 fn check_npm(dir string,cwd string){
-   chdir("${cwd}/${dir}") or {
-                   println(term.fail_message("check_npm: Error: ${err}"))
+   chdir("${cwd}/${dir}") 
+  //  or {
+  //                  println(term.fail_message("check_npm: Error: ${err}"))
                   
-                 }
+  //                }
 
    if exists("node_modules") {println("Dependecies of ${dir} are already installed")}
    else{
@@ -82,11 +84,12 @@ fn check_npm(dir string,cwd string){
 }
 
 fn run_build(dir string,cwd string, cmd string){
-     chdir("${cwd}/${dir}")  or {
-                   println(term.fail_message("run_build: Error: ${err}"))
+     chdir("${cwd}/${dir}")  
+    //  or {
+    //                println(term.fail_message("run_build: Error: ${err}"))
                   
-                 }
-     res:= execute_or_exit("npm run ${cmd}")
+    //              }
+     res:= execute_or_panic("npm run ${cmd}")
      println(res.output)
 }
 
@@ -292,10 +295,11 @@ for option in options{
            println(term.ok_message("Found -gui option."))
            run_build("robboscratch3_gui",cwd,"build")
 
-           chdir("${cwd}/robboscratch3_gui/build") or {
-                   println(term.fail_message("(gui): Error: ${err}"))
+           chdir("${cwd}/robboscratch3_gui/build")
+            // or {
+            //        println(term.fail_message("(gui): Error: ${err}"))
                   
-                 }
+            //      }
 
 //            mut f:= open_file("${cwd}/robboscratch3_gui/build/lib.min.js","e")  or {
 //                  println(term.fail_message("(gui): Error: ${err}"))

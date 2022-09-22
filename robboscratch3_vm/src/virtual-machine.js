@@ -81,7 +81,10 @@ class VirtualMachine extends EventEmitter {
          * @type {Target}
          */
         this.editingTarget = null;
-
+        this.runtime.sens_list = ["-1","-1","-1","-1","-1"];
+        this.runtime.sim_ac =false;
+        this.runtime.going=false;
+        this.runtime.util={};
         /**
          * The currently dragging target, for redirecting IO data.
          * @type {Target}
