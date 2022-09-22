@@ -532,7 +532,8 @@
 	"gui.dca.no_start_timeout_bluetooth": "First telemetry packet timeout (ms)",
 	"gui.dca.device_handle_timeout_bluetooth": "Searching process timeout (ms)",
 	"gui.dca.uno_timeout_bluetooth": "Scrarchduino searching mode timeout (ms)",
-
+    "gui.RobboMenu.sim_enable": "Enable robot simulation",
+    "gui.RobboMenu.sim_disable": "Disable robot simulation",
 	"gui.dca.for_bluetooth": "Settings for bluetooth timeouts: ",
 	"gui.RobboGui.intervals_for_blocks_chain": "Settings for blocks chain timeouts: ",
 	"gui.dca.for_usb": "Settings for serialport connection timeouts: "	
