@@ -55,7 +55,7 @@ const messages = defineMessages({
         defaultMessage: 'false'
     }
 
-  });
+});
 
 
 class RobotPalleteComponent extends Component {
@@ -219,7 +219,7 @@ componentDidUpdate(){
 
 
 
-  }
+  
 
   robotGetDataStart(){
 
@@ -353,6 +353,7 @@ componentDidUpdate(){
 
 
 }
+
 
 
 const mapStateToProps =  state => ({

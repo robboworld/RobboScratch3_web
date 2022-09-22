@@ -423,7 +423,7 @@ const mapDispatchToProps = dispatch => ({
 export default injectIntl(connect(
   mapStateToProps,
   mapDispatchToProps
-)(withAlert()(RobboGui)));
+)(RobboGui));
 
 // export default connect(
 //         mapStateToProps,
