@@ -74,7 +74,7 @@ class Scratch3RobotBlocks {
     this.yc = 0;
     this.sim_dist_l = 0;
     this.sim_dist_r = 0;
-    this.wall_color = [255, 255, 255];
+    this.wall_color = [0,0,0];
     this.sim_pl = 63;
     this.sim_pr = 63;
     this.sim_int = null;
@@ -145,10 +145,11 @@ class Scratch3RobotBlocks {
   }
 
   robot_motors_on_for_seconds(args, util) {
-
+    clearInterval(this.sim_int);
     clearTimeout(this.robot_motors_on_for_seconds_end_timeout);
 
     this.robot_motors_on_for_seconds_end_timeout = setTimeout(() => {
+      clearInterval(this.sim_int_sex);
       this.runtime.RCA.setRobotPower(0, 0, 0);
       clearInterval(this.sim_int);
       this.runtime.going = false;
@@ -168,7 +169,7 @@ class Scratch3RobotBlocks {
         }
         else {
           util.stackFrame.timer = undefined;
-          clearTimeout(this.sim_int);
+          clearTimeout(this.sim_int_sex);
           this.runtime.going = false;
           clearTimeout(this.robot_motors_on_for_seconds_end_timeout);
           this.runtime.RCA.setRobotPower(0, 0, 0);
@@ -192,7 +193,7 @@ class Scratch3RobotBlocks {
         this.runtime.going = true;
         this.xc = util.target.x;
         this.yc = util.target.y;
-        this.sim_int = setInterval(() => {
+        this.sim_int_sex = setInterval(() => {
           const radians = MathUtil.degToRad(90 - util.target.direction);
           let dist = (this.sim_pl + this.sim_pr) / 2 * this.kW;
           this.sim_dist_l += Math.abs(this.sim_pl * this.kW);
@@ -232,7 +233,7 @@ class Scratch3RobotBlocks {
 
 
     if (this.runtime.sim_ac) {
-
+      clearTimeout(this.sim_int_sex);
       clearInterval(this.sim_int);
       this.runtime.going = true;
       this.xc = util.target.x;
@@ -940,7 +941,7 @@ class Scratch3RobotBlocks {
 
 
     this.is_motors_on_active = false;
-
+    clearTimeout(this.sim_int_sex);
     clearTimeout(this.robot_motors_on_for_seconds_timeout_stop);
 
     if ((util.stackFrame.steps != null) && (typeof (util.stackFrame.steps) != 'undefined')) {
@@ -1029,7 +1030,7 @@ class Scratch3RobotBlocks {
   }
 
   robot_turnright(args, util) {
-
+    clearTimeout(this.sim_int_sex);
     this.is_motors_on_active = false;
     clearTimeout(this.robot_motors_on_for_seconds_timeout_stop);
 
@@ -1142,7 +1143,7 @@ class Scratch3RobotBlocks {
     // }
 
     this.is_motors_on_active = false;
-
+    clearTimeout(this.sim_int_sex);
     clearTimeout(this.robot_motors_on_for_seconds_timeout_stop);
 
 
