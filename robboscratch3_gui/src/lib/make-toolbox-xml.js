@@ -988,12 +988,12 @@ const robot = function (isStage, targetId, isExtensionPackActivated, is_sim_acti
 
           `: ``
         }
-        ${is_sim_activated ?
-            `        <block type="robot_wall_color">
-                      <value name="COLOR">
-                          <shadow type="colour_picker"/>
-                      </value>
-                  </block>`: ``
+        ${is_sim_activated ? (
+            `<block type="robot_wall_color">
+                <value name="COLOR">
+                    <shadow type="colour_picker"/>
+                </value>
+            </block>` ): ``
         }
 
         ${!is_sim_activated ?

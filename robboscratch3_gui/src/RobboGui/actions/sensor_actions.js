@@ -896,6 +896,7 @@ export {
   ActionMqttConnect,
   ActionGreenFlag,
   ActionGenerateIotBlocks,
+  ActionTriggerSim,
   //  ActionTriggerNeedLanguageReload
 
 };

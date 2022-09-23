@@ -39,7 +39,7 @@ class EspPreviewComponent extends Component {
         this.esp_is_searching = false;
 
         // this.startEspConnectionStatusCheck();
-
+        console.log(this.props)
         this.props.ECA.registerEspStatusChangeCallback(this.onEspStatusChange.bind(this));
     }
 

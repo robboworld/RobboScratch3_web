@@ -256,7 +256,7 @@ class RobboGui extends Component {
   render() {
 
 //  return this.props.connectDropTarget(
-
+  console.log(this.props)
   this.DCA =  this.props.vm.getDCA();
   this.RCA =  this.props.vm.getRCA();
   this.LCA =  this.props.vm.getLCA();
@@ -287,7 +287,7 @@ class RobboGui extends Component {
           <div className={styles.version}> </div>
 
          {
-             (!this.props.sensorsPalette.sensors_pallete_collapsed)? <SensorPallete RCA={this.RCA} LCA={this.LCA} QCA={this.QCA} OCA={this.OCA} ACA={this.ACA} VM={this.props.vm}/>: <SensorPaletteCollapsed />
+             (!this.props.sensorsPalette.sensors_pallete_collapsed)? <SensorPallete ECA={this.ECA} RCA={this.RCA} LCA={this.LCA} QCA={this.QCA} OCA={this.OCA} ACA={this.ACA} VM={this.props.vm}/>: <SensorPaletteCollapsed />
 
          }
 
