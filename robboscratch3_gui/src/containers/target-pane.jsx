@@ -48,6 +48,7 @@ class TargetPane extends React.Component {
             'handleSpriteUpload',
             'setFileInput'
         ]);
+        this.private_sprites = ["Ключ1", "Ключ2", "Ключ3", "Ключ4", "Ключ5", "Ключ6", "Ключ7", "Ключ8", "Ключ9", "X1", "X2", "X3", "X4"]
     }
 
     // shouldComponentUpdate (nextProps, nextState) { //modified_by_Yaroslav
@@ -117,6 +118,13 @@ class TargetPane extends React.Component {
         });
     }
     handleSelectSprite (id) {
+
+        const spriteName = this.props.vm.runtime.getTargetById(id).getName();
+        if (this.private_sprites.includes(spriteName)) {
+            let password = prompt("Enter password", "");
+            if (password != "12345") return;
+        }
+
         this.props.vm.setEditingTarget(id);
         if (this.props.stage && id !== this.props.stage.id) {
             this.props.onHighlightTarget(id);

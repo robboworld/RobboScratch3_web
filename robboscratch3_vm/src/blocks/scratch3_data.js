@@ -7,6 +7,7 @@ class Scratch3DataBlocks {
          * @type {Runtime}
          */
         this.runtime = runtime;
+        this.private_variables = ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9"]
     }
 
     /**
@@ -36,8 +37,10 @@ class Scratch3DataBlocks {
     }
 
     getVariable (args, util) {
-        const variable = util.target.lookupOrCreateVariable(
-            args.VARIABLE.id, args.VARIABLE.name);
+        const variable = util.target.lookupOrCreateVariable(args.VARIABLE.id, args.VARIABLE.name);
+        if (this.private_variables.includes(variable.name) && window.variablePassword !== "12345"){
+            return "enter correct password"
+        }
         return variable.value;
     }
 

@@ -45,6 +45,7 @@ Blockly.DataCategory = function(workspace) {
   variableModelList.sort(Blockly.VariableModel.compareByName);
   var xmlList = [];
 
+  Blockly.DataCategory.addPasswordButton(xmlList, workspace, 'VARIABLE');
   Blockly.DataCategory.addCreateButton(xmlList, workspace, 'VARIABLE');
 
   for (var i = 0; i < variableModelList.length; i++) {
@@ -62,6 +63,7 @@ Blockly.DataCategory = function(workspace) {
   }
 
   // Now add list variables to the flyout
+  Blockly.DataCategory.addPasswordButton(xmlList, workspace, 'LIST');
   Blockly.DataCategory.addCreateButton(xmlList, workspace, 'LIST');
   variableModelList = workspace.getVariablesOfType(Blockly.LIST_VARIABLE_TYPE);
   variableModelList.sort(Blockly.VariableModel.compareByName);
@@ -395,6 +397,28 @@ Blockly.DataCategory.addCreateButton = function(xmlList, workspace, type) {
     callback = function(button) {
       Blockly.Variables.createVariable(button.getTargetWorkspace(), null,
           Blockly.LIST_VARIABLE_TYPE);};
+  }
+  button.setAttribute('text', msg);
+  button.setAttribute('callbackKey', callbackKey);
+  workspace.registerButtonCallback(callbackKey, callback);
+  xmlList.push(button);
+};
+
+Blockly.DataCategory.addPasswordButton = function(xmlList, workspace, type) {
+  var button = goog.dom.createDom('button');
+  // Set default msg, callbackKey, and callback values for type 'VARIABLE'
+  var msg = 'Enter password';
+  var callbackKey = 'Enter password';
+  var callback = function(button) {
+    window.variablePassword = prompt("Enter password", "")
+  };
+
+  if (type === 'LIST') {
+    msg = Blockly.Msg.NEW_LIST;
+    callbackKey = 'CREATE_LIST';
+    callback = function(button) {
+      window.variablePassword = promt("Enter password", "")
+  }
   }
   button.setAttribute('text', msg);
   button.setAttribute('callbackKey', callbackKey);
