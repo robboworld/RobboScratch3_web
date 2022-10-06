@@ -1102,20 +1102,20 @@ class Scratch3RobotBlocks {
         this.distr = 0;
         this.xc = util.target.x;
         this.yc = util.target.y;
-        this.sim_int = setInterval(() => {
-          const radians = MathUtil.degToRad(90 - util.target.direction);
-          let dist = (simpl + simpr) / 2 * this.kW;
-          this.sim_dist_l += Math.abs(simpl * this.kW);
-          this.sim_dist_r += Math.abs(simpr * this.kW);
-          this.distl += Math.abs(simpl * this.kW);
-          this.distr += Math.abs(simpr * this.kW);
+        this.sim_int = setInterval((self, ownTarget) => {
+          const radians = MathUtil.degToRad(90 - ownTarget.direction);
+          let dist = (simpl + simpr) / 2 * self.kW;
+          self.sim_dist_l += Math.abs(simpl * self.kW);
+          self.sim_dist_r += Math.abs(simpr * self.kW);
+          self.distl += Math.abs(simpl * self.kW);
+          self.distr += Math.abs(simpr * self.kW);
           const dx = dist * Math.cos(radians);
           const dy = dist * Math.sin(radians);
-          this.yc += dy;
-          this.xc += dx;
-          util.target.setXY(this.xc, this.yc);
-          util.target.setDirection(util.target.direction + MathUtil.radToDeg(Math.atan((simpl - simpr) / this.rad)));
-        }, this.fps);
+          self.yc += dy;
+          self.xc += dx;
+          ownTarget.setXY(self.xc, self.yc);
+          ownTarget.setDirection(ownTarget.direction + MathUtil.radToDeg(Math.atan((simpl - simpr) / self.rad)));
+        }, this.fps, this, util.target);
       }
       else {
         this.runtime.RCA.setRobotPowerAndStepLimits(power_left, power_right, util.stackFrame.steps, 0);
@@ -1212,20 +1212,20 @@ class Scratch3RobotBlocks {
         this.distr = 0;
         this.xc = util.target.x;
         this.yc = util.target.y;
-        this.sim_int = setInterval(() => {
-          const radians = MathUtil.degToRad(90 - util.target.direction);
-          let dist = (simpl + simpr) / 2 * this.kW;
-          this.sim_dist_l += Math.abs(simpl * this.kW);
-          this.sim_dist_r += Math.abs(simpr * this.kW);
-          this.distl += Math.abs(simpl * this.kW);
-          this.distr += Math.abs(simpr * this.kW);
+        this.sim_int = setInterval((self, ownTarget) => {
+          const radians = MathUtil.degToRad(90 - ownTarget.direction);
+          let dist = (simpl + simpr) / 2 * self.kW;
+          self.sim_dist_l += Math.abs(simpl * self.kW);
+          self.sim_dist_r += Math.abs(simpr * self.kW);
+          self.distl += Math.abs(simpl * self.kW);
+          self.distr += Math.abs(simpr * self.kW);
           const dx = dist * Math.cos(radians);
           const dy = dist * Math.sin(radians);
-          this.yc += dy;
-          this.xc += dx;
-          util.target.setXY(this.xc, this.yc);
-          util.target.setDirection(util.target.direction + MathUtil.radToDeg(Math.atan((simpl - simpr) / this.rad)));
-        }, this.fps);
+          self.yc += dy;
+          self.xc += dx;
+          ownTarget.setXY(self.xc, self.yc);
+          ownTarget.setDirection(ownTarget.direction + MathUtil.radToDeg(Math.atan((simpl - simpr) / self.rad)));
+        }, this.fps, this, util.target);
       }
       else {
 
