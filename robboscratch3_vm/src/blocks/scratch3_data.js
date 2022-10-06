@@ -38,7 +38,7 @@ class Scratch3DataBlocks {
 
     getVariable (args, util) {
         const variable = util.target.lookupOrCreateVariable(args.VARIABLE.id, args.VARIABLE.name);
-        if (this.private_variables.includes(variable.name) && window.variablePassword !== "12345"){
+        if (this.private_variables.includes(variable.name) && window.variablePassword !== "8v3Apd"){
             return "enter correct password"
         }
         return variable.value;

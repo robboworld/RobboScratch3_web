@@ -122,7 +122,7 @@ class TargetPane extends React.Component {
         const spriteName = this.props.vm.runtime.getTargetById(id).getName();
         if (this.private_sprites.includes(spriteName)) {
             let password = prompt("Enter password", "");
-            if (password != "12345") return;
+            if (password != "8v3Apd") return;
         }
 
         this.props.vm.setEditingTarget(id);
