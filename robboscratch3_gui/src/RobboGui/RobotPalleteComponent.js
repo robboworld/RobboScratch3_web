@@ -153,7 +153,6 @@ componentDidUpdate(){
           sensors_values_field_list[2].innerHTML = (this.props.RCA.getButtonStartPushed() == "true")?this.props.intl.formatMessage(messages.true):this.props.intl.formatMessage(messages.false);
         }
         else {
-
           var bul = {};bul.ROBOT_SENSORS = 'sensor_trip_meter_left';
           sensors_values_field_list[0].innerHTML = this.props.VM.runtime._primitives.robot_get_sensor_data(bul,null);
           bul.ROBOT_SENSORS = 'sensor_trip_meter_right';

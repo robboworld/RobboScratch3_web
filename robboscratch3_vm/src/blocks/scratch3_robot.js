@@ -193,23 +193,23 @@ class Scratch3RobotBlocks {
         this.runtime.going = true;
         this.xc = util.target.x;
         this.yc = util.target.y;
-        this.sim_int_sex = setInterval(() => {
-          const radians = MathUtil.degToRad(90 - util.target.direction);
-          let dist = (this.sim_pl + this.sim_pr) / 2 * this.kW;
-          this.sim_dist_l += Math.abs(this.sim_pl * this.kW);
-          this.sim_dist_r += Math.abs(this.sim_pr * this.kW);
+        this.sim_int_sex = setInterval((self, ownTarget) => {
+          const radians = MathUtil.degToRad(90 - ownTarget.direction);
+          let dist = (self.sim_pl + self.sim_pr) / 2 * self.kW;
+          self.sim_dist_l += Math.abs(self.sim_pl * self.kW);
+          self.sim_dist_r += Math.abs(self.sim_pr * self.kW);
           const dx = dist * Math.cos(radians);
           const dy = dist * Math.sin(radians);
-          this.yc += dy;
-          this.xc += dx;
-          util.target.setXY(this.xc, this.yc);
-          if (util.target.isTouchingColor(this.wall_color)) {
-            this.yc -= dy;
-            this.xc -= dx;
-            util.target.setXY(this.xc, this.yc);
+          self.yc += dy;
+          self.xc += dx;
+          ownTarget.setXY(self.xc, self.yc);
+          if (ownTarget.isTouchingColor(self.wall_color)) {
+            self.yc -= dy;
+            self.xc -= dx;
+            ownTarget.setXY(self.xc, self.yc);
           }
-          util.target.setDirection(util.target.direction + MathUtil.radToDeg(Math.atan((this.sim_pl - this.sim_pr) / this.rad)));
-        }, this.fps);
+          ownTarget.setDirection(ownTarget.direction + MathUtil.radToDeg(Math.atan((self.sim_pl - self.sim_pr) / self.rad)));
+        }, this.fps, this, util.target);
       }
       else {
         clearInterval(this.motors_on_interval);
@@ -251,23 +251,25 @@ class Scratch3RobotBlocks {
         util.target.setXY(this.xc, this.yc);
       }
       util.target.setDirection(util.target.direction + MathUtil.radToDeg(Math.atan((this.sim_pl - this.sim_pr) / this.rad)));
-      this.sim_int = setInterval(() => {
-        const radians = MathUtil.degToRad(90 - util.target.direction);
-        let dist = (this.sim_pl + this.sim_pr) / 2 * this.kW;
-        this.sim_dist_l += Math.abs(this.sim_pl * this.kW);
-        this.sim_dist_r += Math.abs(this.sim_pr * this.kW);
+      this.sim_int = setInterval((self, ownTarget) => {
+        console.log("Ghbdtn")
+        console.log(ownTarget)
+        const radians = MathUtil.degToRad(90 - ownTarget.direction);
+        let dist = (self.sim_pl + self.sim_pr) / 2 * self.kW;
+        self.sim_dist_l += Math.abs(self.sim_pl * self.kW);
+        self.sim_dist_r += Math.abs(self.sim_pr * self.kW);
         const dx = dist * Math.cos(radians);
         const dy = dist * Math.sin(radians);
-        this.yc += dy;
-        this.xc += dx;
-        util.target.setXY(this.xc, this.yc);
-        if (util.target.isTouchingColor(this.wall_color)) {
-          this.yc -= dy;
-          this.xc -= dx;
-          util.target.setXY(this.xc, this.yc);
+        self.yc += dy;
+        self.xc += dx;
+        ownTarget.setXY(self.xc, self.yc);
+        if (ownTarget.isTouchingColor(self.wall_color)) {
+          self.yc -= dy;
+          self.xc -= dx;
+          ownTarget.setXY(self.xc, self.yc);
         }
-        util.target.setDirection(util.target.direction + MathUtil.radToDeg(Math.atan((this.sim_pl - this.sim_pr) / this.rad)));
-      }, this.fps);
+        ownTarget.setDirection(ownTarget.direction + MathUtil.radToDeg(Math.atan((self.sim_pl - self.sim_pr) / self.rad)));
+      }, this.fps, this, util.target);
     }
     else {
       let power_left = this.power_left;
@@ -693,9 +695,10 @@ class Scratch3RobotBlocks {
 
       case "sensor_trip_meter_left":
 
-        if (this.runtime.sim_ac)
+        if (this.runtime.sim_ac){
+          console.log(this.sim_dist_l)
           sensor_data = Math.round(this.sim_dist_l);
-        else
+        }else
           sensor_data = this.runtime.RCA.getLeftPath();
 
         break;
@@ -998,25 +1001,25 @@ class Scratch3RobotBlocks {
         this.yc = util.target.y;
         this.distl = 0;
         this.distr = 0;
-        this.sim_int = setInterval(() => {
-          const radians = MathUtil.degToRad(90 - util.target.direction);
-          let dist = (this.sim_pl + this.sim_pr) / 2 * this.kW;
-          this.sim_dist_l += Math.abs(this.sim_pl * this.kW);
-          this.sim_dist_r += Math.abs(this.sim_pr * this.kW);
-          this.distl += Math.abs(this.sim_pl * this.kW);
-          this.distr += Math.abs(this.sim_pr * this.kW);
+        this.sim_int = setInterval((self, ownTarget) => {
+          const radians = MathUtil.degToRad(90 - ownTarget.direction);
+          let dist = (self.sim_pl + self.sim_pr) / 2 * self.kW;
+          self.sim_dist_l += Math.abs(self.sim_pl * self.kW);
+          self.sim_dist_r += Math.abs(self.sim_pr * self.kW);
+          self.distl += Math.abs(self.sim_pl * self.kW);
+          self.distr += Math.abs(self.sim_pr * self.kW);
           const dx = dist * Math.cos(radians);
           const dy = dist * Math.sin(radians);
-          this.yc += dy;
-          this.xc += dx;
-          util.target.setXY(this.xc, this.yc);
-          if (util.target.isTouchingColor(this.wall_color)) {
-            this.yc -= dy;
-            this.xc -= dx;
-            util.target.setXY(this.xc, this.yc);
+          self.yc += dy;
+          self.xc += dx;
+          ownTarget.setXY(self.xc, self.yc);
+          if (ownTarget.isTouchingColor(self.wall_color)) {
+            self.yc -= dy;
+            self.xc -= dx;
+            ownTarget.setXY(self.xc, self.yc);
           }
-          util.target.setDirection(util.target.direction + MathUtil.radToDeg(Math.atan((this.sim_pl - this.sim_pr) / this.rad)));
-        }, this.fps);
+          ownTarget.setDirection(ownTarget.direction + MathUtil.radToDeg(Math.atan((self.sim_pl - self.sim_pr) / self.rad)));
+        }, this.fps, this, util.target);
       }
       else {
         this.runtime.RCA.setRobotPowerAndStepLimits(this.power_left, this.power_right, util.stackFrame.steps, 0);
