@@ -251,9 +251,8 @@ class Scratch3RobotBlocks {
         util.target.setXY(this.xc, this.yc);
       }
       util.target.setDirection(util.target.direction + MathUtil.radToDeg(Math.atan((this.sim_pl - this.sim_pr) / this.rad)));
-      this.sim_int = setInterval((self, ownTarget) => {
-        console.log("Ghbdtn")
-        console.log(ownTarget)
+      this.sim_int = null;
+      this.sim_int = setInterval(function (self, ownTarget){
         const radians = MathUtil.degToRad(90 - ownTarget.direction);
         let dist = (self.sim_pl + self.sim_pr) / 2 * self.kW;
         self.sim_dist_l += Math.abs(self.sim_pl * self.kW);
