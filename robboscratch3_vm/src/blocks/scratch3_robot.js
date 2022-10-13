@@ -141,7 +141,8 @@ class Scratch3RobotBlocks {
 
     //console.warn(this.last_util.target.renderer._allDrawables);
     //console.warn(this.last_util.target.renderer);
-    return (this.robot_set_sens(this.last_util, index));
+    this.robot_set_sens.bind(this,this.last_util, index)
+    return this.robot_set_sens(this.last_util, index);
   }
 
   robot_motors_on_for_seconds(args, util) {
@@ -238,8 +239,11 @@ class Scratch3RobotBlocks {
       this.runtime.going = true;
       this.xc = util.target.x;
       this.yc = util.target.y;
+      this.last_util = util;
       const radians = MathUtil.degToRad(90 - util.target.direction);
       let dist = (this.sim_pl + this.sim_pr) / 2 * this.kW;
+      this.sim_dist_l += Math.abs(this.sim_pl * this.kW);
+      this.sim_dist_r += Math.abs(this.sim_pr * this.kW);
       const dx = dist * Math.cos(radians);
       const dy = dist * Math.sin(radians);
       this.yc += dy;
@@ -251,8 +255,8 @@ class Scratch3RobotBlocks {
         util.target.setXY(this.xc, this.yc);
       }
       util.target.setDirection(util.target.direction + MathUtil.radToDeg(Math.atan((this.sim_pl - this.sim_pr) / this.rad)));
-      this.sim_int = null;
-      this.sim_int = setInterval(function (self, ownTarget){
+
+      this.sim_int = setInterval((self, ownTarget) => {
         const radians = MathUtil.degToRad(90 - ownTarget.direction);
         let dist = (self.sim_pl + self.sim_pr) / 2 * self.kW;
         self.sim_dist_l += Math.abs(self.sim_pl * self.kW);
@@ -558,7 +562,6 @@ class Scratch3RobotBlocks {
   }
 
   robot_get_dist(util, a, angle, delta) {
-
     var radians = MathUtil.degToRad(90 - util.target.direction);
     if (a == 3 || a == 2)
       radians = MathUtil.degToRad(90 - util.target.direction + 180);
@@ -695,7 +698,6 @@ class Scratch3RobotBlocks {
       case "sensor_trip_meter_left":
 
         if (this.runtime.sim_ac){
-          console.log(this.sim_dist_l)
           sensor_data = Math.round(this.sim_dist_l);
         }else
           sensor_data = this.runtime.RCA.getLeftPath();
