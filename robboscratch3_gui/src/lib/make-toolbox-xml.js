@@ -1798,7 +1798,7 @@ const makeToolboxXML = function (isStage, targetId, config, categoriesXML,
         //  quadcopter(isStage, targetId), gap, //modified_by_Yaroslav
         // otto(false, targetId), gap,
         //newcat(false),gap,
-        iotBlocks(isStage, targetId),
+       // iotBlocks(isStage, targetId),
         motion(isStage, targetId), gap,
         looks(isStage, targetId, costumeName, backdropName), gap,
         sound(isStage, targetId, soundName), gap,

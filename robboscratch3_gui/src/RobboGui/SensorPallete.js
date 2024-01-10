@@ -106,7 +106,7 @@ class SensorPallete extends Component {
 
         <ArduinoPreviewComponent ACA={this.props.ACA} arduinoIndex={0}/> */}
 
-        <EspPreviewComponent ECA={this.props.ECA} espIndex={0} /> 
+       {/* <EspPreviewComponent ECA={this.props.ECA} espIndex={0} />  */}
 
 
       {/*  <DraggableWindowComponent draggableWindowId={0} initialCoords={initial_coords_quadcopter}>

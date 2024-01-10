@@ -5,7 +5,7 @@ import os.cmdline as cmd
 import term
 
 fn check_inst(util string) bool{
-    exec_res:= execute_or_panic("${util} --version")
+    exec_res:= execute_or_exit("${util} --version")
 
      if exec_res.exit_code != 0 {
        println("${util} is not installed.")
@@ -24,11 +24,10 @@ fn check_inst(util string) bool{
 fn check_dir(dir string, cur_dir string){
 
     //changes working directory
-    chdir(cur_dir) 
-    // or {
-    //                println(term.fail_message("check_dir: Error: ${err}"))
+    chdir(cur_dir) or {
+                   println(term.fail_message("check_dir: Error: ${err}"))
                   
-    //              }
+                 }
    
 
     if exists(dir) {
@@ -54,11 +53,10 @@ fn check_dir(dir string, cur_dir string){
 }
 
 fn check_npm(dir string,cwd string){
-   chdir("${cwd}/${dir}") 
-  //  or {
-  //                  println(term.fail_message("check_npm: Error: ${err}"))
+   chdir("${cwd}/${dir}") or {
+                   println(term.fail_message("check_npm: Error: ${err}"))
                   
-  //                }
+                 }
 
    if exists("node_modules") {println("Dependecies of ${dir} are already installed")}
    else{
@@ -84,12 +82,11 @@ fn check_npm(dir string,cwd string){
 }
 
 fn run_build(dir string,cwd string, cmd string){
-     chdir("${cwd}/${dir}")  
-    //  or {
-    //                println(term.fail_message("run_build: Error: ${err}"))
+     chdir("${cwd}/${dir}")  or {
+                   println(term.fail_message("run_build: Error: ${err}"))
                   
-    //              }
-     res:= execute_or_panic("npm run ${cmd}")
+                 }
+     res:= execute_or_exit("npm run ${cmd}")
      println(res.output)
 }
 
@@ -145,12 +142,14 @@ check_dir("robboscratch3_I10n",cwd)
 check_dir("Robboscratch3_DeviceControlAPI",cwd)
 check_dir("robboscratch3_vm",cwd)
 check_dir("robboscratch3_blocks",cwd)
+check_dir("robboscratch3_render",cwd)
 check_dir("robboscratch3_gui",cwd)
 
 check_npm("robboscratch3_I10n",cwd)
 check_npm("Robboscratch3_DeviceControlAPI",cwd)
 check_npm("robboscratch3_vm",cwd)
 check_npm("robboscratch3_blocks",cwd)
+check_npm("robboscratch3_render",cwd)
 check_npm("robboscratch3_gui",cwd)
 
 
@@ -273,6 +272,24 @@ for option in options{
            cp_with_filter("${cwd}/robboscratch3_I10n","${cwd}/robboscratch3_gui/node_modules/scratch-l10n",filtered_files)
 
       }
+     "-render" {
+            println(term.ok_message("Found -render option."))
+            run_build("robboscratch3_render",cwd,"build")
+
+           rmdir_all("${cwd}/robboscratch3_gui/node_modules/scratch-render") or {
+                    println(term.fail_message("(render): Error: ${err}"))
+                    //exit(1)
+                   }
+
+          mkdir("${cwd}/robboscratch3_gui/node_modules/scratch-render") or {
+                   println(term.fail_message("(i10n) Error: ${err}"))
+                   exit(1)
+                 }
+
+           filtered_files:= [".git","node_modules"]
+           cp_with_filter("${cwd}/robboscratch3_render","${cwd}/robboscratch3_gui/node_modules/scratch-render",filtered_files)
+
+      }
       "-blocks" {
            println(term.ok_message("Found -blocks option."))
            run_build("robboscratch3_blocks",cwd,"prepublish")
@@ -295,11 +312,10 @@ for option in options{
            println(term.ok_message("Found -gui option."))
            run_build("robboscratch3_gui",cwd,"build")
 
-           chdir("${cwd}/robboscratch3_gui/build")
-            // or {
-            //        println(term.fail_message("(gui): Error: ${err}"))
+           chdir("${cwd}/robboscratch3_gui/build") or {
+                   println(term.fail_message("(gui): Error: ${err}"))
                   
-            //      }
+                 }
 
 //            mut f:= open_file("${cwd}/robboscratch3_gui/build/lib.min.js","e")  or {
 //                  println(term.fail_message("(gui): Error: ${err}"))
@@ -398,7 +414,7 @@ for option in options{
 
 if options.len == 0 {
    println("No options found")
-   println("Available options: -dca -blocks -vm -i10n -gui")
+   println("Available options: -dca -blocks -vm -i10n -render -gui")
 }
 
 
