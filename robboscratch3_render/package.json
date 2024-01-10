@@ -1,0 +1,122 @@
+{
+  "_args": [
+    [
+      "scratch-render@0.1.0-prerelease.20190208165820",
+      "/home/max/rs3_sim/robboscratch3_gui"
+    ]
+  ],
+  "_from": "scratch-render@0.1.0-prerelease.20190208165820",
+  "_hasShrinkwrap": false,
+  "_id": "scratch-render@0.1.0-prerelease.20190208165820",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/scratch-render",
+  "_nodeVersion": "8.15.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/scratch-render_0.1.0-prerelease.20190208165820_1549645124754_0.15858284599376593"
+  },
+  "_npmUser": {
+    "email": "scratchr-sysadmin@media.mit.edu",
+    "name": "scratch"
+  },
+  "_npmVersion": "6.4.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "scratch-render",
+    "raw": "scratch-render@0.1.0-prerelease.20190208165820",
+    "rawSpec": "0.1.0-prerelease.20190208165820",
+    "scope": null,
+    "spec": "0.1.0-prerelease.20190208165820",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "https://registry.npmjs.org/scratch-render/-/scratch-render-0.1.0-prerelease.20190208165820.tgz",
+  "_shasum": "131cfcec7d716993ce5d6fe7f0ad919aab589fd9",
+  "_shrinkwrap": null,
+  "_spec": "scratch-render@0.1.0-prerelease.20190208165820",
+  "_where": "/home/max/rs3_sim/robboscratch3_gui",
+  "author": {
+    "name": "Massachusetts Institute of Technology"
+  },
+  "browser": "./src/index.js",
+  "bugs": {
+    "url": "https://github.com/LLK/scratch-render/issues"
+  },
+  "dependencies": {
+    "grapheme-breaker": "0.3.2",
+    "hull.js": "0.2.10",
+    "ify-loader": "1.0.4",
+    "linebreak": "0.3.0",
+    "minilog": "3.1.0",
+    "raw-loader": "^0.5.1",
+    "scratch-storage": "^1.0.0",
+    "scratch-svg-renderer": "0.2.0-prerelease.20190125192231",
+    "twgl.js": "4.4.0"
+  },
+  "description": "WebGL Renderer for Scratch 3.0",
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-eslint": "^8.2.1",
+    "babel-loader": "^7.1.4",
+    "babel-polyfill": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
+    "chromeless": "^1.5.1",
+    "copy-webpack-plugin": "^4.5.1",
+    "docdash": "^0.4.0",
+    "eslint": "^4.6.1",
+    "eslint-config-scratch": "^5.0.0",
+    "gh-pages": "^1.0.0",
+    "jsdoc": "^3.5.5",
+    "json": "^9.0.4",
+    "scratch-vm": "0.2.0-prerelease.20181024204838",
+    "tap": "^11.0.0",
+    "travis-after-all": "^1.4.4",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "webpack": "^4.8.0",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.4"
+  },
+  "directories": {},
+  "dist": {
+    "fileCount": 29,
+    "integrity": "sha512-kT34kGNR7PtvWVP3+NPRUQNQMc9NPSryS6WhnbtV8jEL/kyJ4yrRiVM7wQcDZ3rJxFInwY9XSFk9F1bV3RgFQw==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJcXbVFCRA9TVsSAnZWagAAKH4P/2EujHxXw9ydYr8wuRFe\nCFg8abhP04MXTLlw/tAdjvFgvAcWlm7lSKwrpFV3ORFTHVhq8Snqtsl2+zPP\n/Xyrd3tjOWSGMn9CjDBP/P/hvuZ8ntVwlHrrIKtC77p131mjm/dmN/YyTt/i\nd1m1j1o1kd4P0qZnSF9SZNACFlRvH7aL3d3xCWsAEyB1/nVNmatTHrZWvIuP\ndOEV6iw/D1/WWthfC8bbKxNNAVMCj2ALi5cMqmZc2W2Llzgnte6lJOEN7KXF\nnOfv58AOaKgR2uGvIOWsyzSQiXo2bcuMkXmgaYrd35dQP435y64CBj2vWopy\nGvJRBvnce+0zTtGPwxTWmdq6lGY5obheeUy20GOkv2+YK0cwOyv0ZjKPGcTT\nOmQIze9s5Y1ULcBqLWQZPxGKc2IiScAHvu82NaX99MviTwp86mW8PxCEXAVR\nzlSVQYgnU8tS2991ayLVsQfFAahm3L1huY7VXuvnpB+36LQW66TnTaeVHvIk\nldO3gGgnhPB4a0dtBkq8QzhazsLVGX/F8QoXg+H08d3mRQ1K5Sh2W4rLWhan\nhUPfyiysv474ttwOkBeiweNWZ3RLJzFROqfNFIWZe7ACOGGjJYU5pSlHonuj\nb3SDTw4pI5JBSpMVnVRoC7IT60RW4260fP50dFavho60pvgnFs3G7eTVEgEg\n6Ozd\r\n=FnRD\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "131cfcec7d716993ce5d6fe7f0ad919aab589fd9",
+    "tarball": "https://registry.npmjs.org/scratch-render/-/scratch-render-0.1.0-prerelease.20190208165820.tgz",
+    "unpackedSize": 6700529
+  },
+  "gitHead": "25df9f1ab7cc5187a14ad2ee6ab017b41f43b933",
+  "homepage": "https://github.com/LLK/scratch-render#readme",
+  "license": "BSD-3-Clause",
+  "main": "./dist/node/scratch-render.js",
+  "maintainers": [
+    {
+      "name": "scratch",
+      "email": "scratchr-sysadmin@media.mit.edu"
+    }
+  ],
+  "name": "scratch-render",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "sha": "25df9f1ab7cc5187a14ad2ee6ab017b41f43b933",
+    "type": "git",
+    "url": "git+ssh://git@github.com/LLK/scratch-render.git"
+  },
+  "scripts": {
+    "build": "webpack --progress --colors",
+    "docs": "jsdoc -c .jsdoc.json",
+    "lint": "eslint .",
+    "prepublish": "npm run build",
+    "prepublish-watch": "npm run watch",
+    "start": "webpack-dev-server",
+    "tap": "tap test/unit test/integration",
+    "test": "npm run lint && npm run docs && npm run build && npm run tap",
+    "version": "json -f package.json -I -e \"this.repository.sha = '$(git log -n1 --pretty=format:%H)'\"",
+    "watch": "webpack --progress --colors --watch --watch-poll"
+  },
+  "version": "0.1.0-prerelease.20190208165820"
+}
